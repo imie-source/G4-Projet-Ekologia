@@ -1,0 +1,4 @@
+ekologia_main:
+    resource: "@EkologiaMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
