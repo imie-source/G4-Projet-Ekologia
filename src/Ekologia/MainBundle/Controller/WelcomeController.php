@@ -2,9 +2,7 @@
 
 namespace Ekologia\MainBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-class WelcomeController extends Controller
+class WelcomeController extends MasterController
 {
     public function indexAction()
     {
