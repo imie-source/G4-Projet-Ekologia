@@ -2,141 +2,334 @@
 
 namespace Ekologia\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * User
+ *
  * @ORM\Table(name="eko_user")
+ * @ORM\Entity
  */
 class User extends BaseUser
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=32)
-     * @Assert\NotBlank(message = "Ekologia.User.nom.notBlank")
+     * @var string
+     *
+     * @ORM\Column(name="addressStreet", type="string", length=255)
      */
-    protected $nom;
+    private $addressStreet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="addressZipCode", type="integer")
+     * @Assert\Regex(pattern = "/^[0-9]{5}$/", message = "ekologia.user.user.address-zip-code.regex")
+     */
+    private $addressZipCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="addressCity", type="string", length=255)
+     */
+    private $addressCity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phoneNumber", type="string", length=255)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=255)
+     * @Assert\Url(message = "ekologia.user.user.avatar.url")
+     */
+    private $avatar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     * @Assert\NotBlank(message = "ekologia.user.user.country.not-blank")
+     */
+    private $country;
     
     /**
-     * @ORM\Column(type="string", length=32)
-     * @Assert\NotBlank(message = "Ekologia.User.prenom.notBlank")
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
      */
-    protected $prenom;
+    private $userType;
     
     /**
-     * @ORM\Column(type="date", length=32)
-     * @Assert\NotBlank(message = "Ekologia.User.dateNaissance.notBlank")
-     * @Assert\Date(message = "Ekologia.User.dateNaissance.DateType")
+     * @ORM\OneToOne(targetEntity="Ekologia\UserBundle\Entity\PUser", cascade={"persist"})
      */
-    protected $dateNaissance;
+    private $puser;
     
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\OneToOne(targetEntity="Ekologia\UserBundle\Entity\CUser", cascade={"persist"})
      */
-    protected $numeroEtVoie;
-    
+    private $cuser;
+
+
     /**
-     * @ORM\Column(type="integer", length=5)
-     * @Assert\Regex(pattern = "/^[0-9]{5}$/", message = "Ekologia.User.CodePostal.regex")
+     * Get id
+     *
+     * @return integer 
      */
-    protected $codePostale;
-    
-    /**min
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $ville;
-    
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $pays;
-      
-    /**
-     * @ORM\Column(type="string", length=100)
-     * @Assert\Url(message = "Ekologia.User.Photo.URL")
-     */
-    protected $photo;
-    
-    public function __construct()
+    public function getId()
     {
-        parent::__construct();
-    }
-    
-    public function getId() {
         return $this->id;
     }
-        
-    public function getNom() {
-        return $this->nom;
+
+    /**
+     * Set addressStreet
+     *
+     * @param string $addressStreet
+     * @return User
+     */
+    public function setAddressStreet($addressStreet)
+    {
+        $this->addressStreet = $addressStreet;
+
+        return $this;
     }
 
-    public function getPrenom() {
-        return $this->prenom;
+    /**
+     * Get addressStreet
+     *
+     * @return string 
+     */
+    public function getAddressStreet()
+    {
+        return $this->addressStreet;
     }
 
-    public function getDateNaissance() {
-        return $this->dateNaissance;
+    /**
+     * Set addressZipCode
+     *
+     * @param integer $addressZipCode
+     * @return User
+     */
+    public function setAddressZipCode($addressZipCode)
+    {
+        $this->addressZipCode = $addressZipCode;
+
+        return $this;
     }
 
-    public function getNumeroEtVoie() {
-        return $this->numeroEtVoie;
+    /**
+     * Get addressZipCode
+     *
+     * @return integer 
+     */
+    public function getAddressZipCode()
+    {
+        return $this->addressZipCode;
     }
 
-    public function getCodePostale() {
-        return $this->codePostale;
+    /**
+     * Set addressCity
+     *
+     * @param string $addressCity
+     * @return User
+     */
+    public function setAddressCity($addressCity)
+    {
+        $this->addressCity = $addressCity;
+
+        return $this;
     }
 
-    public function getVille() {
-        return $this->ville;
+    /**
+     * Get addressCity
+     *
+     * @return string 
+     */
+    public function getAddressCity()
+    {
+        return $this->addressCity;
     }
 
-    public function getPays() {
-        return $this->pays;
+    /**
+     * Set phoneNumber
+     *
+     * @param string $phoneNumber
+     * @return User
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
     }
 
-    public function getPhoto() {
-        return $this->photo;
+    /**
+     * Get phoneNumber
+     *
+     * @return string 
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
     }
 
-    public function setNom($nom) {
-        $this->nom = $nom;
+    /**
+     * Set avatar
+     *
+     * @param string $avatar
+     * @return User
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
     }
 
-    public function setPrenom($prenom) {
-        $this->prenom = $prenom;
+    /**
+     * Get avatar
+     *
+     * @return string 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 
-    public function setDateNaissance($dateNaissance) {
-        $this->dateNaissance = $dateNaissance;
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
     }
 
-    public function setNumeroEtVoie($numeroEtVoie) {
-        $this->numeroEtVoie = $numeroEtVoie;
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
-    public function setCodePostale($codePostale) {
-        $this->codePostale = $codePostale;
+    /**
+     * Set country
+     *
+     * @param string $country
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
     }
 
-    public function setVille($ville) {
-        $this->ville = $ville;
+    /**
+     * Get country
+     *
+     * @return string 
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
-    public function setPays($pays) {
-        $this->pays = $pays;
+    /**
+     * Set user type
+     *
+     * @param string $userType
+     * @return User
+     */
+    public function setUserType($userType)
+    {
+        $this->userType = $userType;
+
+        return $this;
     }
 
-    public function setPhoto($photo) {
-        $this->photo = $photo;
+    /**
+     * Get user type
+     *
+     * @return string 
+     */
+    public function getUserType()
+    {
+        return $this->userType;
     }
 
+    /**
+     * Set puser
+     *
+     * @param \Ekologia\UserBundle\Entity\PUser $puser
+     * @return User
+     */
+    public function setPuser(\Ekologia\UserBundle\Entity\PUser $puser = null)
+    {
+        $this->puser = $puser;
 
+        return $this;
+    }
+
+    /**
+     * Get puser
+     *
+     * @return \Ekologia\UserBundle\Entity\PUser 
+     */
+    public function getPuser()
+    {
+        return $this->puser;
+    }
+
+    /**
+     * Set cuser
+     *
+     * @param \Ekologia\UserBundle\Entity\CUser $cuser
+     * @return User
+     */
+    public function setCuser(\Ekologia\UserBundle\Entity\CUser $cuser = null)
+    {
+        $this->cuser = $cuser;
+
+        return $this;
+    }
+
+    /**
+     * Get cuser
+     *
+     * @return \Ekologia\UserBundle\Entity\CUser 
+     */
+    public function getCuser()
+    {
+        return $this->cuser;
+    }
 }
