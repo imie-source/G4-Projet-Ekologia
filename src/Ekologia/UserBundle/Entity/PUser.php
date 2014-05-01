@@ -41,7 +41,7 @@ class PUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthdate", type="date")
+     * @ORM\Column(name="birthdate", type="date", nullable=true)
      * @Assert\Date(message = "ekologia.user.puser.birthdate.date-type")
      */
     private $birthdate;

@@ -26,6 +26,7 @@ class CUser
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message = "ekologia.user.cuser.name.not-blank")
      */
     private $name;
     
@@ -33,6 +34,7 @@ class CUser
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\NotBlank(message = "ekologia.user.cuser.type.not-blank")
      */
     private $type;
 
@@ -40,6 +42,7 @@ class CUser
      * @var string
      *
      * @ORM\Column(name="activity", type="string", length=255)
+     * @Assert\NotBlank(message = "ekologia.user.cuser.activity.not-blank")
      */
     private $activity;
 

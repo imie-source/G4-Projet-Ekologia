@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@EkologiaUserBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
@@ -72,3 +73,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Ekologia\UserBundle\Entity\User
+    registration:
+        form:
+            type: ekologia_user_registration

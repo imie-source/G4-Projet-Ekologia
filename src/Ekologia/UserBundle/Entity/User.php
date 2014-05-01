@@ -26,14 +26,14 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="addressStreet", type="string", length=255)
+     * @ORM\Column(name="addressStreet", type="string", length=255, nullable=true)
      */
     private $addressStreet;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="addressZipCode", type="integer")
+     * @ORM\Column(name="addressZipCode", type="integer", nullable=true)
      * @Assert\Regex(pattern = "/^[0-9]{5}$/", message = "ekologia.user.user.address-zip-code.regex")
      */
     private $addressZipCode;
@@ -41,21 +41,21 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="addressCity", type="string", length=255)
+     * @ORM\Column(name="addressCity", type="string", length=255, nullable=true)
      */
     private $addressCity;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phoneNumber", type="string", length=255)
+     * @ORM\Column(name="phoneNumber", type="string", length=255, nullable=true)
      */
     private $phoneNumber;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="avatar", type="string", length=255)
+     * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
      * @Assert\Url(message = "ekologia.user.user.avatar.url")
      */
     private $avatar;
@@ -63,7 +63,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -78,7 +78,8 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     * @Assert\Choice({"puser", "cuser"})
      */
     private $userType;
     
@@ -91,7 +92,21 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="Ekologia\UserBundle\Entity\CUser", cascade={"persist"})
      */
     private $cuser;
-
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Ekologia\MainBundle\Entity\Tag", cascade={"persist"}, mappedBy="users")
+     */
+    private $tags;
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -331,5 +346,47 @@ class User extends BaseUser
     public function getCuser()
     {
         return $this->cuser;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Ekologia\MainBundle\Entity\Tag $tags
+     * @return User
+     */
+    public function addTag(\Ekologia\MainBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Ekologia\MainBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Ekologia\MainBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+    
+    /**
+     * @Assert\True(message = "ekologia.user.user.is-valid-join")
+     */
+    public function isValidJoin()
+    {
+        return $this->userType === 'puser' && $this->puser !== null && $this->cuser === null ||
+               $this->userType === 'cuser' && $this->puser === null && $this->cuser !== null;
     }
 }
