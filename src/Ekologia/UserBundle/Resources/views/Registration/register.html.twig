@@ -1,0 +1,145 @@
+{% extends "::base.html.twig" %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/registration.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    {% form_theme form 'EkologiaMainBundle:Form:form-horizontal_4-8.html.twig' %}
+    {{ form_start(form, {'action': path('fos_user_registration_register'), 'method': 'POST', 'attr': {'id': 'form-registration'} }) }}
+        <div id="tabs-registration" class="tabs row">
+            <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked links">
+                    <li><a href="#tabs-informations">{{ 'ekologia.user.register.tab-general-info.name'|trans }}</a></li>
+                    <li><a href="#tabs-description">{{ 'ekologia.user.register.tab-description.name'|trans }}</a></li>
+                    <li><a href="#tabs-interest">{{ 'ekologia.user.register.tab-interest.name'|trans }}</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                <div id="tabs-informations" class="tabs-content">
+                    <h2>{{ 'ekologia.user.register.tab-general-info.title'|trans }}</h2>
+                    <div class="form-horizontal">
+                        <div class="col-sm-6">
+                            {{ form_row(form.userType) }}
+                            
+                            {{ form_row(form.username) }}
+                            
+                            {{ form_row(form.email) }}
+                            
+                            {{ form_row(form.plainPassword.first) }}
+                            
+                            {{ form_row(form.plainPassword.second) }}
+                            
+                            {{ form_row(form.addressStreet) }}
+                            
+                            {{ form_row(form.addressZipCode) }}
+                            
+                            {{ form_row(form.addressCity) }}
+                            
+                            {{ form_row(form.country) }}
+                            
+                            {{ form_row(form.phoneNumber) }}
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div id="part-subuser">
+                                <div id="part-cuser">
+                                    {{ form_row(form.cuser.name) }}
+
+                                    {{ form_row(form.cuser.activity) }}
+
+                                    {{ form_row(form.cuser.type) }}
+                                </div>
+
+                                <div id="part-puser">
+                                     {{ form_row(form.puser.firstname) }}
+
+                                     {{ form_row(form.puser.lastname) }}
+
+                                     {{ form_row(form.puser.birthdate) }}
+                                </div>
+                            </div>
+                            {% set avatar = form.avatar.vars.value is defined and form.avatar.vars.value is not empty ? form.avatar.vars.value : asset(app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.basePath ~ '/img/avatar-default.png') %}
+                            {{ form_row(form.avatar, {'attr': {'value': avatar} }) }}
+                            
+                            <img src="{{ avatar }}" alt="{{ 'ekologia.user.registration.avatar-example'|trans }}" class="avatar" id="registration-avatar-show" />
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-description" class="tabs-content">
+                    <h2>{{ 'ekologia.user.register.tab-description.title'|trans }}</h2>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                {{ form_widget(form.description, {'id': 'tabs-description-editor', 'attr': {'class': 'form-control'} }) }}
+                                <script>CKEDITOR.replace('tabs-description-editor')</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-interest" class="tabs-content">
+                    <h2>{{ 'ekologia.user.register.tab-interest.title'|trans }}</h2>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            {#<div id="form-search-interest" class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-9">
+                                        <input type="text" name="interest" id="form-search-interest-interest" placeholder="Recherchez votre intérêt" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="submit" value="Rechercher" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="word-cloud">
+                                NUAGE DE MOTS
+                            </div>#}
+                            <div id="form-add-interest" class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-9">
+                                        <input type="text" name="interest" id="form-add-interest-tag" placeholder="Entrez votre intérêt" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="submit" value="Ajouter" class="btn btn-primary" id="form-add-interest-add" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <table class="table table-hover table-striped table-bordered" id="table-interest" data-prototype="<tr><td>__value__</td><td><span class='btn btn-danger btn-xs' data-target='__name__'><i class='glyphicon glyphicon-remove remove'></i> Supprimer</span></td></tr>">
+                                <thead><tr><th colspan="2">{{ 'ekologia.user.register.tab-interest.selected'|trans }}</th></tr></thead>
+                                <tbody>
+                                    {% for interest in form.interests %}
+                                        <tr>
+                                            <td>
+                                                {{ interest.vars.value }}
+                                            </td>
+                                            <td>
+                                                <span class="btn btn-danger btn-xs">
+                                                    <i class="glyphicon glyphicon-remove remove"></i>
+                                                    Supprimer
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden">
+            {{ form_widget(form.interests, {'id': 'form-registration-interests'}) }}
+            {{ form_rest(form) }}
+        </div>
+        
+        <div class="pull-right marginTop10">
+            <input class="btn" name="annuler" type="reset" />
+            <input class="btn btn-primary" name="valider" type="submit" />
+        </div>
+    {{ form_end(form) }}
+    <div id="part-subuser-removed" class="hidden"></div>
+{% endblock body %}

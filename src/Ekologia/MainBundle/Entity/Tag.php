@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tag
  *
- * @ORM\Table()
+ * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="Ekologia\MainBundle\Entity\TagRepository")
  */
 class Tag
@@ -29,7 +29,7 @@ class Tag
     private $name;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Ekologia\UserBundle\Entity\User", inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity="Ekologia\UserBundle\Entity\User", inversedBy="tags", cascade={"persist"})
      */
     private $users;
 

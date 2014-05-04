@@ -4,3 +4,9 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: ekologia_user_registration }
+   
+    ekologia_user.listener.registration:
+        class: Ekologia\UserBundle\EventListener\RegistrationListener
+        arguments: [@doctrine]
+        tags:
+            - { name: kernel.event_subscriber }

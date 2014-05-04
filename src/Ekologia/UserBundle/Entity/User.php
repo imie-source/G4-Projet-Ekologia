@@ -98,6 +98,8 @@ class User extends BaseUser
      */
     private $tags;
     
+    private $interests;
+    
     
     /**
      * Constructor
@@ -357,6 +359,7 @@ class User extends BaseUser
     public function addTag(\Ekologia\MainBundle\Entity\Tag $tags)
     {
         $this->tags[] = $tags;
+        $tags->addUser($this);
 
         return $this;
     }
@@ -388,5 +391,19 @@ class User extends BaseUser
     {
         return $this->userType === 'puser' && $this->puser !== null && $this->cuser === null ||
                $this->userType === 'cuser' && $this->puser === null && $this->cuser !== null;
+    }
+    
+    public function setInterests($interests) {
+        $this->interests = $interests;
+    }
+    
+    public function getInterests() {
+        if ($this->interests === null) {
+            $this->interests = array();
+            foreach($this->tags as $tag) {
+                $this->interests[] = $tag->getName();
+            }
+        }
+        return $this->interests;
     }
 }

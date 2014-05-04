@@ -9,9 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PUserType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('firstname', 'text');
-        $builder->add('lastname', 'text');
-        $builder->add('birthdate', 'date');
+        $builder->add('firstname', 'text', array('label' => 'ekologia.user.registration.puser.firstname.label'));
+        $builder->add('lastname', 'text', array('label' => 'ekologia.user.registration.puser.lastname.label'));
+        $builder->add('birthdate', 'date', array(
+            'widget' => 'single_text',
+            'format' => 'd/M/y',
+            'label' => 'ekologia.user.registration.puser.birthdate.label'
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
