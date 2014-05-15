@@ -1,13 +1,138 @@
-<!DOCTYPE html>
+{#<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        
         {% block body %}{% endblock %}
+        
+        
         {% block javascripts %}{% endblock %}
+    </body>
+</html>
+{{ asset('css/blog.css') }}
+#}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Prototype - Accueil</title>
+        <meta charset="utf-8" />
+         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="all" />
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/helper.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="logo col-sm-2">
+                        <a href="{{ path('homepage') }}"></a>
+                    </div>
+
+                    <div class="menu col-sm-8">
+                        <ul class="row list-unstyled">
+                            <li class="col-sm-3"><a href="#">Groupes</a></li>
+                            <li class="col-sm-3"><a href="#">La communauté</a></li>
+                            <li class="col-sm-3"><a href="#">Administration</a></li>
+                            <li class="col-sm-3"><a href="#">Page 1</a></li>
+                            <li class="col-sm-3"><a href="#">Page 2</a></li>
+                            <li class="col-sm-3"><a href="#">Page 3</a></li>
+                            <li class="col-sm-3"><a href="#">Page 4</a></li>
+                            <li class="col-sm-3"><a href="#">Autre page</a></li>
+                            <li class="col-sm-3"><a href="#">Lien X</a></li>
+                            <li class="col-sm-3"><a href="#">Lien Y</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="user-block col-sm-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Mon compte
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Informations</a></li>
+                                    <li><a href="#">Mes groupes</a></li>
+                                    <li><a href="#">Déconnexion</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <ul class="nav nav-pills">
+                            <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
+                            <li><a href="#">Page 1</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Page 2 <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu multi-level">
+                                    <li><a href="#">Sous page 2.1</a></li>
+                                    <li><a href="#">Sous Page 2.2</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Groupes</a></li>
+                            <li><a href="#">La communauté</a></li>
+                            <li><a href="#">Administration</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <form method="post" action="#" class="form-inline">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </span>
+                                <input type="text" name="search" class="form-control" placeholder="Recherche" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li class="active">Xyz</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="body">
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default">Groupes</button>
+                    <button type="button" class="btn btn-default">Contacter les administrateurs du site</button>
+                    <button type="button" class="btn btn-default">Contacts</button>
+                    <button type="button" class="btn btn-default">Informations légales</button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

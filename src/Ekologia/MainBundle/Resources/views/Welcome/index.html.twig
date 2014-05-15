@@ -1,14 +1,111 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Undefined Welcome Page</title>
-        <meta charset="utf-8"/>
-    </head>
-    <body>
-        <h1>Undefined Welcome Page</h1>
-        
-        <p>
-            Page d'accueil non encore écrite.
-        </p>
-    </body>
-</html>
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="content">
+                <h1>Présentation de l'association</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac varius odio. Sed sagittis fermentum nisi, accumsan rutrum nisl lacinia ac. Pellentesque sollicitudin sagittis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante metus, bibendum et lacus ut, ullamcorper bibendum arcu. Praesent aliquet, velit vel dictum auctor, urna urna tristique leo, ut tristique est erat a arcu. Vestibulum turpis nulla, mollis id porttitor a, sodales ut libero. Curabitur molestie dignissim justo, sit amet commodo augue tristique non. Duis sed blandit tellus. Nulla justo mauris, tempus ac imperdiet a, posuere vitae leo. Aliquam consequat molestie augue, vitae feugiat nibh aliquet ut. Maecenas at feugiat lacus. Nulla facilisi. Nunc in scelerisque magna. Ut molestie ipsum ac varius tristique. Pellentesque congue tortor dui, sodales molestie nisi euismod et.</p>
+
+                <p>Vivamus at odio ac quam posuere sollicitudin vitae quis quam. Phasellus consequat ligula vel leo tempor, vel tempus nulla suscipit. Sed dictum mollis mi eu pharetra. Cras vel facilisis ipsum. Nam commodo mattis purus ac facilisis. Vivamus consectetur est at turpis auctor, a ornare turpis vestibulum. Vivamus vehicula turpis a mi ornare blandit.</p>
+
+                <p>Pellentesque erat velit, consectetur in ligula ut, accumsan pretium arcu. Fusce suscipit cursus quam sed sodales. Nam dapibus ante faucibus nulla ornare tristique. Quisque leo nisl, varius eget risus in, feugiat dictum mauris. Etiam rutrum ligula et lectus tristique hendrerit. Cras tincidunt congue pretium. Fusce tempus eros sit amet purus ullamcorper dignissim. Aliquam et iaculis est, id dapibus lectus. Suspendisse id hendrerit quam. Praesent vestibulum arcu eu justo pretium fringilla.</p>
+
+                <p>Quisque fermentum suscipit viverra. Sed vulputate vitae odio eget mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris semper velit velit, id sodales lacus posuere vel. Sed augue metus, convallis suscipit augue quis, vulputate varius eros. Fusce venenatis imperdiet dolor. Nunc pharetra dui eu interdum tincidunt. Sed sodales lacinia vulputate.</p>
+
+                <p>In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed placerat ante eget vulputate vehicula. Maecenas cursus lectus at orci cursus volutpat. Mauris suscipit aliquam ullamcorper. Phasellus malesuada justo et tincidunt interdum. Curabitur et est congue, pretium felis at, placerat elit. Nullam justo sapien, interdum at gravida et, adipiscing tempor nisi. Nunc tempus magna id tellus semper, ut pellentesque sem egestas.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Page Facebook</h2>
+                    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Ffr-fr.facebook.com%2Fpages%2FEcolocoop%2F316720805038502&amp;height=400&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23DDDDDD&amp;stream=false&amp;header=true&amp;appId=215550098468187"
+                            scrolling="no"
+                            frameborder="0"
+                            style="border:none; overflow:hidden; width:100%; height:400px;"
+                            allowTransparency="true"></iframe>
+                </div>
+                <div class="col-sm-6">
+                    <h2>Groupe facebook</h2>
+                    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Ffr-fr.facebook.com%2Fpages%2FEcolocoop%2F316720805038502&amp;height=400&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23DDDDDD&amp;stream=false&amp;header=true&amp;appId=215550098468187"
+                            scrolling="no"
+                            frameborder="0"
+                            style="border:none; overflow:hidden; width:100%; height:400px;"
+                            allowTransparency="true"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="btn-group">
+                <a href="#" class="btn btn-default">Faire un don</a>
+                <a href="#" class="btn btn-default">Inscription personne physique</a>
+            </div>
+
+            <div class="aside">
+                <h4>Les personnes morales adhérentes</h4>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette rouge</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette bleue</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette bleue 2</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette rouge 2</div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-default">Inscription personne morale</a>
+            </div>
+
+            <div class="aside">
+                <h4>Nos partenaires</h4>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette rouge</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette bleue</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette bleue 2</div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#" class="thumbnail">
+                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <div class="caption">Vignette rouge 2</div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-default">Devenir partenaire</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

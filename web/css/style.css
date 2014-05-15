@@ -1,0 +1,98 @@
+/* functions */
+/* helpers */
+/* line 11, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000311}}
+.hidden {
+  display: none;
+}
+/* line 15, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000315}}
+.marginTop10 {
+  margin-top: 10px;
+}
+/* Layout */
+/* line 20, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000320}}
+body {
+  padding-bottom: 25px;
+}
+/* line 24, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000324}}
+#header {
+  padding: 5px 0;
+  height: 125px;
+}
+/* line 27, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000327}}
+#header .row > div {
+  height: 125px;
+}
+/* line 31, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000331}}
+#header .logo a {
+  display: block;
+  background-color: blue;
+  width: 100%;
+  height: 115px;
+}
+/* line 38, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000338}}
+#header .menu {
+  position: relative;
+}
+/* line 41, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000341}}
+#header .menu ul {
+  position: absolute;
+  left: 0;
+  righjt: 0;
+  bottom: 0;
+  text-align: center;
+}
+/* line 51, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000351}}
+#header .user-block .panel {
+  height: 115px;
+}
+/* line 55, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000355}}
+#header .user-block .panel-heading {
+  padding: 5px;
+  text-align: center;
+}
+/* line 60, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000360}}
+#header .user-block .panel-body {
+  padding: 5px;
+}
+/* line 63, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000363}}
+#header .user-block .panel-body .list-unstyled {
+  padding: 0;
+  margin: 0;
+}
+/* line 71, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000371}}
+#nav {
+  margin-bottom: 5px;
+}
+/* line 72, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000372}}
+#nav .inline {
+  display: inline;
+}
+/* line 79, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000379}}
+#body {
+  margin-bottom: 10px;
+}
+/* line 82, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000382}}
+#body .content {
+  text-align: justify;
+}
+/* line 87, C:\xampp\htdocs\projets\ecolocoop\public_html\design\css\style.less */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/xampp\/htdocs\/projets\/ecolocoop\/public_html\/design\/css\/style\.less}line{font-family:\0000387}}
+#body .aside .thumbnail {
+  text-align: center;
+}

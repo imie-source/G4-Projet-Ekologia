@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/registration.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'ekologia.user.registration.success.title'|trans }}</h1>
+    
+    <p>{{ 'ekologia.user.registration.success.description'|trans|raw }}</p>
+{% endblock body %}
