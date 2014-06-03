@@ -1,0 +1,7 @@
+parameters:
+#    ekologia_cms.example.class: Ekologia\CMSBundle\Example
+
+services:
+#    ekologia_cms.example:
+#        class: %ekologia_cms.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

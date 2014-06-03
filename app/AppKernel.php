@@ -20,6 +20,9 @@ class AppKernel extends Kernel
             
             new Ekologia\MainBundle\EkologiaMainBundle(),
             new Ekologia\UserBundle\EkologiaUserBundle(),
+            new Ekologia\CMSBundle\EkologiaCMSBundle(),
+            new Ekologia\WikiAdminBundle\EkologiaWikiAdminBundle(),
+            new Ekologia\WikiGroupBundle\EkologiaWikiGroupBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

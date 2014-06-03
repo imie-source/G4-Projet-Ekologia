@@ -1,0 +1,7 @@
+parameters:
+#    ekologia_wiki_admin.example.class: Ekologia\WikiAdminBundle\Example
+
+services:
+#    ekologia_wiki_admin.example:
+#        class: %ekologia_wiki_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

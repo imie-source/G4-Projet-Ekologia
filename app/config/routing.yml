@@ -1,3 +1,15 @@
+ekologia_wiki_group:
+    resource: "@EkologiaWikiGroupBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ekologia_wiki_admin:
+    resource: "@EkologiaWikiAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ekologia_cms:
+    resource: "@EkologiaCMSBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ekologia_main:
     resource: "@EkologiaMainBundle/Resources/config/routing.yml"
     prefix:   /
