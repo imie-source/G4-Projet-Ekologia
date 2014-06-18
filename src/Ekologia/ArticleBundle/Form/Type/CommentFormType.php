@@ -14,7 +14,7 @@ class CommentFormType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', 'textarea', array('required' => true, 'label' => 'ekologia.article.form.comment.content.label'));
+        $builder->add('text', 'textarea', array('required' => true, 'label' => 'ekologia.article.form.comment.text.label'));
         
         if ($options['withTitle']) {
             $builder->add('title', 'text', array('required' => true, 'label' => 'ekologia.article.form.comment.title.label'));

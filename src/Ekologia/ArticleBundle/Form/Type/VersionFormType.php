@@ -14,7 +14,8 @@ class VersionFormType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', 'textarea', array('required' => true, 'label' => 'ekologia.article.form.version.content.label'));
+        $builder->add('title', 'text', array('required' => true, 'label' => 'ekologia.article.form.article.title.label'))
+                ->add('content', 'textarea', array('required' => true, 'label' => 'ekologia.article.form.version.content.label'));
     }
 
     /**
