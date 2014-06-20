@@ -70,7 +70,7 @@ abstract class ArticleController extends AbstractArticleController
      * @see canRead()
      */
     protected function read(Request $request, $canonical, $whenOk, $whenForbidden, $whenNotExists) {
-        $article = $this->getArticle($canonical);
+        $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canRead($request, $article)) {
                 return $whenOk($request, $article);
@@ -141,7 +141,7 @@ abstract class ArticleController extends AbstractArticleController
             if ($request->getMethod() === 'POST') {
                 $form->bind($request);
                 if ($form->isValid()) {
-                    $article->setCanonical($this->canonicalize($article->getVersion()->getTitle()));
+                    $article->setCanonical($this->canonicalize($request, $article->getVersion()->getTitle()));
                     $article->addVersion($article->getVersion());
                     $article->setVersion(null);
                     return $whenOk($request, $article);
@@ -218,7 +218,7 @@ abstract class ArticleController extends AbstractArticleController
      * @see canUpdate()
      */
     protected function update(Request $request, $canonical, $whenShow, $whenOk, $whenBadRequest, $whenForbidden, $whenNotExists) {
-        $article = $this->getArticle($canonical);
+        $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canUpdate($request, $article)) {
                 $form = $this->createForm(new $this->getArticleFormType(), $article);
@@ -304,7 +304,7 @@ abstract class ArticleController extends AbstractArticleController
      * @see canRemove()
      */
     protected function remove(Request $request, $canonical, $whenShow, $whenOk, $whenBadRequest, $whenForbidden, $whenNotExists) {
-        $article = $this->getArticle($canonical);
+        $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canRemove($request, $article)) {
                 $form = $this->createForm(new $this->getArticleDeleteFormType(), $article);
@@ -389,7 +389,7 @@ abstract class ArticleController extends AbstractArticleController
      * @see canUpdate()
      */
     protected function backToVersion(Request $request, $canonical, \DateTime $date, $whenOk, $whenBadRequest, $whenForbidden, $whenNotExists) {
-        $article = $this->getArticle($canonical);
+        $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canUpdate($request, $article)) {
                 $previousVersion = null;

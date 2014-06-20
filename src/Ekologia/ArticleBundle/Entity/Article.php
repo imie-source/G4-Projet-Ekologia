@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
+ * @ORM\MappedSuperclass
  */
 class Article {
     /**
@@ -24,22 +25,22 @@ class Article {
      * 
      * @ORM\Column(name="language", type="string", length=255)
      */
-    private $language;
+    protected $language;
     
     /**
      * @var string
      * 
-     * @ORM\Column(name="canonical", type="string", length=255, unique=true) 
+     * @ORM\Column(name="canonical", type="string", length=255)
      */
-    private $canonical;
+    protected $canonical;
     
     /**
      * @var boolean
      * 
      * @ORM\Column(name="deletable", type="boolean")
-     * @Assert\NotBlank(message = "ekologia.article.article.deletable.not-blank")  
+     * @Assert\NotBlank(message = "ekologia.article.article.deletable.not-blank")
      */
-    private $deletable;
+    protected $deletable;
     
     /**
      * Visibility of the article.
@@ -47,9 +48,9 @@ class Article {
      * @var string
      * 
      * @ORM\Column(name="visibility", type="string", length=255)
-     * @Assert\NotBlank(message = "ekologia.article.article.visibility.not-blank") 
+     * @Assert\NotBlank(message = "ekologia.article.article.visibility.not-blank")
      */
-    private $visibility;
+    protected $visibility;
     
     /**
      * @var date
@@ -57,13 +58,12 @@ class Article {
      * @ORM\Column(name="dateCreation", type="date", length=255) 
      * @Assert\NotBlank(message = "ekologia.article.article.dateCreation.not-blank")
      */
-    private $dateCreation;
+    protected $dateCreation;
     
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Ekologia\MainBundle\Entity\Tag", cascade={"persist"}, mappedBy="articles")
      */
-    private $tags;
+    protected $tags;
     
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -352,5 +352,19 @@ class Article {
      */
     public function getVersion() {
         return $this->version;
+    }
+    
+    /**
+     * Return the current version of the article
+     * 
+     * @param string $isActive If true, returns only the last active version
+     */
+    public function getCurrentVersion($isActive=true) {
+        foreach ($this->getVersions() as $version) {
+            if (!$isActive || $version->getActive()) {
+                return $version;
+            }
+        }
+        return null;
     }
 }

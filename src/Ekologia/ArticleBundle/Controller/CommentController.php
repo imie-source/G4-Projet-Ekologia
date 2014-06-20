@@ -50,7 +50,7 @@ abstract class CommentController extends AbstractArticleController
      * @see canRead()
      */
     public function readFromArticle(Request $request, $canonical, $whenOk, $whenForbidden, $whenNotExists) {
-        $article = $this->getArticle($canonical);
+        $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canRead($request, $article)) {
                 $comments = $this->getDoctrine()
@@ -125,7 +125,7 @@ abstract class CommentController extends AbstractArticleController
      * @see canCreate()
      */
     public function create(Request $request, $canonical, $whenShow, $whenOk, $whenBadRequest, $whenForbidden, $whenNotExists) {
-        $article = $this->getArticle($canonical);
+        $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canCreate($request, $article)) {
                 $comment = new $this->getCommentClassName();

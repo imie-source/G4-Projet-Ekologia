@@ -17,9 +17,10 @@ abstract class AbstractArticleController extends MasterController
      * @param string $canonical The article canonical or id
      * @return \Ekologia\ArticleBundle\Entity\Article
      */
-    protected function getArticle($canonical) {
+    protected function getArticle(Request $request, $canonical) {
         $rep = $this->getDoctrine()->getRepository($this->getArticleRepositoryName());
-        $article = $rep->findBy(array('canonical' => $canonical));
+        $article = $rep->findOneBy(array('canonical' => $canonical,
+                                         'language' => strtoupper($request->getLocale())));
         return $article === null
                ? $rep->find($canonical) // with id
                : $article;
@@ -32,7 +33,7 @@ abstract class AbstractArticleController extends MasterController
      * @param string $title
      * @return string
      */
-    protected function canonicalize($title) {
+    protected function canonicalize(Request $request, $title) {
         $unwanted_array = array('Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
                                 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
                                 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
@@ -53,12 +54,12 @@ abstract class AbstractArticleController extends MasterController
             $result = str_replace('--', '-', $result, $count);
         } while ($count > 0);
         
-        if ($this->getArticle($result) != null) {
+        if ($this->getArticle($request, $result) != null) {
             $i = 2;
             do {
                 $tmp = $result . '-' . $i;
                 $i++;
-            } while ($this->getArticle($tmp) != null);
+            } while ($this->getArticle($request, $tmp) != null);
             $result = $tmp;
         }
         return $result;

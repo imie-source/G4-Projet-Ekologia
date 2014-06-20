@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Versions
+ * @ORM\MappedSuperclass
  */
 class Version {
     /**
@@ -40,10 +41,17 @@ class Version {
      */
     private $content;
     
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active;
+    
     private $article;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Ekologia\ArticleBundle\Entity\Commentaire", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Ekologia\UserBundle\Entity\User")
      */
     private $user;
     
@@ -148,5 +156,23 @@ class Version {
      */
     public function getUser() {
         return $this->user;
+    }
+
+    /**
+     * Set active
+     * @param boolean $active
+     * @return \Ekologia\ArticleBundle\Entity\Version This object
+     */
+    public function setActive($active) {
+        $this->active = $active;
+        return $this;
+    }
+
+    /**
+     * Get active
+     * @return boolean
+     */
+    public function getActive() {
+        return $this->active;
     }
 }

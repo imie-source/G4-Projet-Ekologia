@@ -33,7 +33,7 @@ class MasterController extends Controller {
      * 
      * @return \Symfony\Component\HttpFoundation\RedirectResponse The generated redirection or null if any argument is given
      */
-    protected function redirectResponse($url, $parameters) {
+    protected function redirectResponse($url, $parameters=array()) {
         return $this->redirect($this->generateUrl($url, $parameters));
     }
 }

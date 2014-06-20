@@ -1,0 +1,3 @@
+ekologia_cms_page_read:
+    pattern:  /{_locale}/p/{canonical}
+    defaults: { _controller: EkologiaCMSBundle:Page:read }

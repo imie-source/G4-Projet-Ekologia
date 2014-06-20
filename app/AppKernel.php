@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             
             new Ekologia\MainBundle\EkologiaMainBundle(),
             new Ekologia\UserBundle\EkologiaUserBundle(),
+            new Ekologia\ArticleBundle\EkologiaArticleBundle(),
             new Ekologia\CMSBundle\EkologiaCMSBundle(),
             new Ekologia\WikiAdminBundle\EkologiaWikiAdminBundle(),
             new Ekologia\WikiGroupBundle\EkologiaWikiGroupBundle(),

@@ -32,6 +32,11 @@ class Tag
      * @ORM\ManyToMany(targetEntity="Ekologia\UserBundle\Entity\User", inversedBy="tags", cascade={"persist"})
      */
     private $users;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Ekologia\CMSBundle\Entity\Page", inversedBy="tags", cascade={"persist"})
+     */
+    private $pages;
 
     
     /**

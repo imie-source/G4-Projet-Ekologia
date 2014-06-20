@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commentaires
+ * @ORM\MappedSuperclass
  */
 class Commentaire {
     /**
