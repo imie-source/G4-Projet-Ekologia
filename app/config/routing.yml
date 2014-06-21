@@ -1,22 +1,41 @@
 ekologia_wiki_group:
     resource: "@EkologiaWikiGroupBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
 
 ekologia_wiki_admin:
     resource: "@EkologiaWikiAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
 
 ekologia_cms:
     resource: "@EkologiaCMSBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
 
 ekologia_main:
     resource: "@EkologiaMainBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix:   /{_locale}
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix: /{_locale}/register
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
