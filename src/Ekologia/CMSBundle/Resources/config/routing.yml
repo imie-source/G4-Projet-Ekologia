@@ -1,3 +1,15 @@
 ekologia_cms_page_read:
     pattern:  /p/{canonical}
     defaults: { _controller: EkologiaCMSBundle:Page:read }
+
+ekologia_cms_page_create:
+    pattern:  /page/create
+    defaults: { _controller: EkologiaCMSBundle:Page:create }
+
+ekologia_cms_page_update:
+    pattern:  /page/update/{canonical}
+    defaults: { _controller: EkologiaCMSBundle:Page:update }
+
+ekologia_cms_page_remove:
+    pattern:  /page/remove/{canonical}
+    defaults: { _controller: EkologiaCMSBundle:Page:remove }

@@ -4,11 +4,19 @@ namespace Ekologia\CMSBundle\Controller;
 
 use Ekologia\ArticleBundle\Controller\ArticleController;
 use Symfony\Component\HttpFoundation\Request;
+use Ekologia\CMSBundle\Entity\Page;
 
 /**
  * Actions for Page manipulation
  */
 class PageController extends ArticleController {
+    /**
+     * Read a page
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request The current request
+     * @param string $canonical The canonical name of the page
+     * @return \Symfony\Component\HttpFoundation\Response The HTTP response
+     */
     public function readAction(Request $request, $canonical) {
         return $this->read($request, $canonical,
             function(Request $request, $article){ // whenOk
@@ -16,6 +24,81 @@ class PageController extends ArticleController {
             }, function(Request $request, $article){ // when forbidden
                 return $this->redirectResponse('homepage');
             }, function(Request $request, $canonical){ // when not exists
+                return $this->redirectResponse('homepage');
+            }
+        );
+    }
+    
+    /**
+     * All steps to create a new page
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request The current request
+     * @return \Symfony\Component\HttpFoundation\Response The HTTP response
+     */
+    public function createAction(Request $request) {
+        return $this->create($request,
+            function(Request $request, $form){ // whenShow
+                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_create'));
+            }, function(Request $request, Page $page){ // whenOk
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($page);
+                $em->flush();
+                return $this->redirectResponse('ekologia_cms_page_read', array('canonical' => $page->getCanonical()));
+            }, function(Request $request, $form){ // whenBadRequest
+                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_create'));
+            }, function(Request $request){ // whenForbidden
+                return $this->redirectResponse('homepage');
+            }
+        );
+    }
+    
+    /**
+     * All steps to update an existing page
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request The current request
+     * @param string $canonical The canonical name of the page
+     * @return \Symfony\Component\HttpFoundation\Response The HTTP response
+     */
+    public function updateAction(Request $request, $canonical) {
+        return $this->update($request, $canonical,
+            function(Request $request, $form){ // whenShow
+                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_update'));
+            }, function(Request $request, Page $page){ // whenOk
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($page);
+                $em->flush();
+                return $this->redirectResponse('ekologia_cms_page_read', array('canonical' => $page->getCanonical()));
+            }, function(Request $request, $form){ // whenBadRequest
+                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_update'));
+            }, function(Request $request, Page $page){ // whenForbidden
+                return $this->redirectResponse('homepage');
+            }, function(Request $request, $canonical){ // When not exists
+                return $this->redirectResponse('homepage');
+            }
+        );
+    }
+    
+    /**
+     * All steps to remove an existing page
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request The current request
+     * @param string $canonical The canonical name of the page
+     * @return \Symfony\Component\HttpFoundation\Response The HTTP response
+     */
+    public function removeAction(Request $request, $canonical) {
+        return $this->remove($request, $canonical,
+            function(Request $request, $form){ // whenShow
+                return $this->render('EkologiaCMSBundle:Page:remove.html.twig', array('form' => $form));
+            }, function(Request $request, Page $page){ // whenOk
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($page);
+                $em->flush();
+                return $this->redirectResponse('homepage');
+            }, function(Request $request, $form){ // whenBadRequest
+                return $this->render('EkologiaCMSBundle:Page:remove.html.twig', array('form' => $form));
+            }, function(Request $request, Page $page){ // whenForbidden
+                return $this->redirectResponse('homepage');
+            }, function(Request $request, $canonical){ // When not exists
                 return $this->redirectResponse('homepage');
             }
         );

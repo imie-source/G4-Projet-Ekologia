@@ -105,11 +105,7 @@ abstract class ArticleController extends AbstractArticleController
      * |           // Show the page with the form - same as $whenOk
      * |           return $this->render('myTwigWithForm', array('form' => $form));
      * |       },
-     * |       function($request, $article){  // $whenForbidden
-     * |           // Insert error in flash session and redirect to homepage
-     * |           $request->getSession()
-     * |                   ->getFlashBag()
-     * |                   ->add('error-article-forbidden', $article->getId());
+     * |       function($request){  // $whenForbidden
      * |           return $this->redirectResponse('homepage');
      * |       }
      * |   );
@@ -128,16 +124,18 @@ abstract class ArticleController extends AbstractArticleController
      *      Signature: (\Symfony\Component\HttpFoundation\Request, \Symfony\Component\Form\Form) => mixed<br/>
      *      Called when the user can create article, sent data and there is an error.
      * @param function $whenForbidden
-     *      Signature: (\Symfony\Component\HttpFoundation\Request, \Ekologia\ArticleBundle\Entity\Article) => mixed<br/>
-     *      Called when the article exists but the user cannot read it.
+     *      Signature: (\Symfony\Component\HttpFoundation\Request) => mixed<br/>
+     *      Called when the user cannot create an article.
      * @return mixed
      *      The result of one of previous function.
      * @see canCreate()
      */
     protected function create(Request $request, $whenShow, $whenOk, $whenBadRequest, $whenForbidden) {
         if ($this->canCreate($request)) {
-            $article = new $this->getArticleClassName();
-            $form = $this->createForm(new $this->getArticleFormType(), $article);
+            $articleClassName = $this->getArticleClassName();
+            $articleFormType = $this->getArticleFormType();
+            $article = new $articleClassName;
+            $form = $this->createForm(new $articleFormType, $article);
             if ($request->getMethod() === 'POST') {
                 $form->bind($request);
                 if ($form->isValid()) {
@@ -247,7 +245,7 @@ abstract class ArticleController extends AbstractArticleController
      * 
      * <pre><code>
      * public function myAction(Request $request, $articleCanonical) {
-     * |   return $this->update(
+     * |   return $this->remove(
      * |       $request,                       // $request
      * |       $articleCanonical,              // $canonical
      * |       function($request, $form){      // $whenShow
