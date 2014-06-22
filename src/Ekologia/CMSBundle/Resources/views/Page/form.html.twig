@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <h1>Créer une page</h1>
+    {% form_theme form 'EkologiaMainBundle:Form:form-horizontal_4-8.html.twig' %}
+    {{ form_start(form, {'action': formAction, 'method': 'POST', 'attr': {'id': 'form-registration'} }) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.version.title) }}
+        {{ form_row(form.version.content) }}
+        
+        {{ form_row(form.visibility) }}
+        {{ form_row(form.tags) }}
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+{% endblock body %}

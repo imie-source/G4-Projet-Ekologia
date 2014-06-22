@@ -25,35 +25,35 @@ class Version {
      * @ORM\Column(name="dateVersion", type="date", length=255) 
      * @Assert\NotBlank(message = "ekologia.article.version.dateVersion.not-blank")
      */
-    private $dateVersion;
+    protected $dateVersion;
     
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    private $title;
+    protected $title;
     
     /**
      * @var string
      * 
      * @ORM\Column(name="content", type="text")
      */
-    private $content;
+    protected $content;
     
     /**
      * @var boolean
      * 
      * @ORM\Column(name="active", type="boolean")
      */
-    private $active;
+    protected $active;
     
-    private $article;
+    protected $article;
     
     /**
      * @ORM\ManyToOne(targetEntity="Ekologia\UserBundle\Entity\User")
      */
-    private $user;
+    protected $user;
     
     /**
      * Get the version id

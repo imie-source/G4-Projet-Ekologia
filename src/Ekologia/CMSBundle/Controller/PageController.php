@@ -37,16 +37,15 @@ class PageController extends ArticleController {
      */
     public function createAction(Request $request) {
         return $this->create($request,
-            function(Request $request, $form){ // whenShow
-                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_create'));
-            }, function(Request $request, Page $page){ // whenOk
+            $this->showFormCreate(), // whenShow
+            function(Request $request, Page $page){ // whenOk
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($page);
                 $em->flush();
                 return $this->redirectResponse('ekologia_cms_page_read', array('canonical' => $page->getCanonical()));
-            }, function(Request $request, $form){ // whenBadRequest
-                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_create'));
-            }, function(Request $request){ // whenForbidden
+            },
+            $this->showFormCreate(), // whenBadRequest
+            function(Request $request){ // whenForbidden
                 return $this->redirectResponse('homepage');
             }
         );
@@ -61,16 +60,15 @@ class PageController extends ArticleController {
      */
     public function updateAction(Request $request, $canonical) {
         return $this->update($request, $canonical,
-            function(Request $request, $form){ // whenShow
-                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_update'));
-            }, function(Request $request, Page $page){ // whenOk
+            $this->showFormEdit(), // whenShow
+            function(Request $request, Page $page){ // whenOk
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($page);
                 $em->flush();
                 return $this->redirectResponse('ekologia_cms_page_read', array('canonical' => $page->getCanonical()));
-            }, function(Request $request, $form){ // whenBadRequest
-                return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form, 'formAction' => 'ekologia_cms_page_update'));
-            }, function(Request $request, Page $page){ // whenForbidden
+            },
+            $this->showFormEdit(), // whenBadRequest
+            function(Request $request, Page $page){ // whenForbidden
                 return $this->redirectResponse('homepage');
             }, function(Request $request, $canonical){ // When not exists
                 return $this->redirectResponse('homepage');
@@ -102,6 +100,25 @@ class PageController extends ArticleController {
                 return $this->redirectResponse('homepage');
             }
         );
+    }
+    
+    private function showForm(Request $request, $form, $url) {
+        return $this->render('EkologiaCMSBundle:Page:form.html.twig', array('form' => $form->createView(), 'formAction' => $url));
+    }
+    
+    private function showFormCreate() {
+        return function(Request $request, $form) {
+            return $this->showForm($request, $form,
+                                   $this->generateUrl('ekologia_cms_page_create'));
+        };
+    }
+    
+    private function showFormEdit(Request $request, $form) {
+        return function(Request $request, $form) {
+            return $this->showForm($request, $form,
+                                   $this->generateUrl('ekologia_cms_page_update',
+                                                      array('canonical' => $request->get('canonical'))));
+        };
     }
     
     /**
@@ -153,7 +170,7 @@ class PageController extends ArticleController {
 
     /** {@inheritDoc} */
     protected function getArticleFormType() {
-        // TODO
+        return 'ekologia_cms_page';
     }
 
     /** {@inheritDoc} */

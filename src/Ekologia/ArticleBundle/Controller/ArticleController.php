@@ -133,13 +133,14 @@ abstract class ArticleController extends AbstractArticleController
     protected function create(Request $request, $whenShow, $whenOk, $whenBadRequest, $whenForbidden) {
         if ($this->canCreate($request)) {
             $articleClassName = $this->getArticleClassName();
-            $articleFormType = $this->getArticleFormType();
             $article = new $articleClassName;
-            $form = $this->createForm(new $articleFormType, $article);
+            $form = $this->createForm($this->getArticleFormType(), $article, array('creation' => true));
             if ($request->getMethod() === 'POST') {
                 $form->bind($request);
                 if ($form->isValid()) {
                     $article->setCanonical($this->canonicalize($request, $article->getVersion()->getTitle()));
+                    $article->setLanguage(strtoupper($request->getLocale()));
+                    $article->getVersion()->setUser($this->getUser());
                     $article->addVersion($article->getVersion());
                     $article->setVersion(null);
                     return $whenOk($request, $article);
@@ -219,7 +220,7 @@ abstract class ArticleController extends AbstractArticleController
         $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canUpdate($request, $article)) {
-                $form = $this->createForm(new $this->getArticleFormType(), $article);
+                $form = $this->createForm($this->getArticleFormType(), $article);
                 if ($request->getMethod() === 'POST') {
                     $form->bind($request);
                     if ($form->isValid()) {
@@ -305,7 +306,7 @@ abstract class ArticleController extends AbstractArticleController
         $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canRemove($request, $article)) {
-                $form = $this->createForm(new $this->getArticleDeleteFormType(), $article);
+                $form = $this->createForm($this->getArticleDeleteFormType(), $article);
                 if ($request->getMethod() === 'POST') {
                     $form->bind($request);
                     if ($form->isValid()) {

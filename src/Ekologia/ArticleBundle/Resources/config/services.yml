@@ -2,6 +2,15 @@ parameters:
 #    ekologia_article.example.class: Ekologia\ArticleBundle\Example
 
 services:
-#    ekologia_article.example:
-#        class: %ekologia_article.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ekologia_article.form.type.article:
+        class: Ekologia\ArticleBundle\Form\Type\ArticleFormType
+        tags:
+            - { name: form.type, alias: ekologia_article_article }
+    ekologia_article.form.type.comment:
+        class: Ekologia\ArticleBundle\Form\Type\CommentFormType
+        tags:
+            - { name: form.type, alias: ekologia_article_comment }
+    ekologia_article.form.type.version:
+        class: Ekologia\ArticleBundle\Form\Type\VersionFormType
+        tags:
+            - { name: form.type, alias: ekologia_article_version }

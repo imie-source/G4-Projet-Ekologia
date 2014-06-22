@@ -38,7 +38,6 @@ class Article {
      * @var boolean
      * 
      * @ORM\Column(name="deletable", type="boolean")
-     * @Assert\NotBlank(message = "ekologia.article.article.deletable.not-blank")
      */
     protected $deletable;
     
@@ -265,7 +264,7 @@ class Article {
      */
     public function addVersion(\Ekologia\ArticleBundle\Entity\Version $version) {
         $this->versions[] = $version;
-        $version.setArticle($this);
+        $version->setArticle($this);
         return $this;
     }
     
@@ -341,7 +340,7 @@ class Article {
      * @param \Ekologia\ArticleBundle\Entity\Version $version
      * @return \Ekologia\ArticleBundle\Entity\Article
      */
-    public function setVersion(\Ekologia\ArticleBundle\Entity\Version $version) {
+    public function setVersion(\Ekologia\ArticleBundle\Entity\Version $version=null) {
         $this->version = $version;
         return $this;
     }

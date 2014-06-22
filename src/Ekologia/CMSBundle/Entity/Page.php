@@ -4,6 +4,7 @@ namespace Ekologia\CMSBundle\Entity;
 
 use Ekologia\ArticleBundle\Entity\Article;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Ekologia\CMSBundle\Entity\PageRepository")
@@ -30,4 +31,9 @@ class Page extends Article {
      * @ORM\ManyToMany(targetEntity="Ekologia\MainBundle\Entity\Tag", cascade={"persist"}, mappedBy="articles")
      */
     protected $tags;
+    
+    /**
+     * @Assert\Type(type="Ekologia\CMSBundle\Entity\Version")
+     */
+    protected $version;
 }
