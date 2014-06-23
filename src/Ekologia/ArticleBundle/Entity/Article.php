@@ -354,6 +354,19 @@ class Article {
     }
     
     /**
+     * Check if the article has an active version
+     */
+    public function hasActiveVersion() {
+        foreach ($this->getVersions() as $version) {
+            /* @var $version \Ekologia\ArticleBundle\Entity\Version */
+            if ($version->getActive()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Return the current version of the article
      * 
      * @param string $isActive If true, returns only the last active version

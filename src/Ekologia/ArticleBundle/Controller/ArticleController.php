@@ -220,11 +220,14 @@ abstract class ArticleController extends AbstractArticleController
         $article = $this->getArticle($request, $canonical);
         if (isset($article)) {
             if ($this->canUpdate($request, $article)) {
+                $article->setVersion($article->getCurrentVersion(false));
                 $form = $this->createForm($this->getArticleFormType(), $article);
                 if ($request->getMethod() === 'POST') {
                     $form->bind($request);
                     if ($form->isValid()) {
-                        $article->addVersion($article->getVersion());
+                        $version = clone $article->getVersion();
+                        $version->setDateVersion(new \DateTime);
+                        $article->addVersion($version);
                         $article->setVersion(null);
                         return $whenOk($request, $article);
                     } else {

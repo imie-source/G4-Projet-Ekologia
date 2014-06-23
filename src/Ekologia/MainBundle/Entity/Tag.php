@@ -40,6 +40,15 @@ class Tag
 
     
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -70,13 +79,6 @@ class Tag
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -110,5 +112,38 @@ class Tag
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add page
+     *
+     * @param \Ekologia\CMSBundle\Entity\Page $page
+     * @return Tag
+     */
+    public function addPage(\Ekologia\UserBundle\Entity\User $page)
+    {
+        $this->pages[] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Remove page
+     *
+     * @param \Ekologia\CMSBundle\Entity\Page $page
+     */
+    public function removePage(\Ekologia\CMSBundle\Entity\Page $page)
+    {
+        $this->pages->removeElement($page);
+    }
+
+    /**
+     * Get pages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 }

@@ -1,6 +1,6 @@
 ekologia_cms_page_read:
-    pattern:  /p/{canonical}
-    defaults: { _controller: EkologiaCMSBundle:Page:read }
+    pattern:  /p/{canonical}/{version}
+    defaults: { _controller: EkologiaCMSBundle:Page:read, version: current }
 
 ekologia_cms_page_create:
     pattern:  /page/create

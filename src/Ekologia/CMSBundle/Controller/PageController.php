@@ -113,7 +113,7 @@ class PageController extends ArticleController {
         };
     }
     
-    private function showFormEdit(Request $request, $form) {
+    private function showFormEdit() {
         return function(Request $request, $form) {
             return $this->showForm($request, $form,
                                    $this->generateUrl('ekologia_cms_page_update',
@@ -139,11 +139,14 @@ class PageController extends ArticleController {
     protected function canRead(\Symfony\Component\HttpFoundation\Request $request, $element) {
         /* @var $element \Ekologia\CMSBundle\Entity\Page */
         if ($this->isRoleWriter()) {
-            return in_array($element->getVisibility(), array('public', 'protected'));
+            if ($request->get('version') !== 'last' && !$element->hasActiveVersion()) {
+                return false;
+            } else {
+                return true;
+            }
         } else {
-            return $element->getVisibility() === 'public';
+            return $element->getVisibility() === 'public' && $element->hasActiveVersion();
         }
-        
     }
 
     /** {@inheritDoc} */

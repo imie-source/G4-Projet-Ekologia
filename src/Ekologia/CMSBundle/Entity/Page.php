@@ -28,7 +28,7 @@ class Page extends Article {
     protected $children;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Ekologia\MainBundle\Entity\Tag", cascade={"persist"}, mappedBy="articles")
+     * @ORM\ManyToMany(targetEntity="Ekologia\MainBundle\Entity\Tag", cascade={"persist"}, mappedBy="pages")
      */
     protected $tags;
     
