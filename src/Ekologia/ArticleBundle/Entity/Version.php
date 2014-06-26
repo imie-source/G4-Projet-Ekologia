@@ -22,7 +22,7 @@ class Version {
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="dateVersion", type="date", length=255) 
+     * @ORM\Column(name="dateVersion", type="date", length=255)
      * @Assert\NotBlank(message = "ekologia.article.version.dateVersion.not-blank")
      */
     protected $dateVersion;
@@ -89,7 +89,7 @@ class Version {
      * Set article title
      * 
      * @param string $title
-     * @return \Ekologia\ArticleBundle\Entity\Article This object
+     * @return \Ekologia\ArticleBundle\Entity\Version This object
      */
     public function setTitle($title) {
         $this->title = $title;

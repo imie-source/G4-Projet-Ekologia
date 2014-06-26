@@ -122,6 +122,15 @@ class PageController extends ArticleController {
     }
     
     /**
+     * Checks if the current user is has the ROLE_READER
+     * 
+     * @return boolean
+     */
+    private function isRoleReader() {
+        return $this->get('security.context')->isGranted('ROLE_READER');
+    }
+    
+    /**
      * Checks if the current user is has the ROLE_WRITER
      * 
      * @return boolean
@@ -138,7 +147,7 @@ class PageController extends ArticleController {
     /** {@inheritDoc} */
     protected function canRead(\Symfony\Component\HttpFoundation\Request $request, $element) {
         /* @var $element \Ekologia\CMSBundle\Entity\Page */
-        if ($this->isRoleWriter()) {
+        if ($this->isRoleReader()) {
             if ($request->get('version') !== 'last' && !$element->hasActiveVersion()) {
                 return false;
             } else {

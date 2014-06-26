@@ -1,12 +1,27 @@
 {% extends "::base.html.twig" %}
 
+{% if is_granted('ROLE_READER') and app.request.get('version') == 'last' %}
+    {% set currentVersion = article.currentVersion(false) %}
+{% else %}
+    {% set currentVersion = article.currentVersion(true) %}
+{% endif %}
+
+{% block stylesheets %}
+    <style>
+        {{ currentVersion.css|raw }}
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {{ currentVersion.js|raw }}
+    </script>
+{% endblock %}
+
 {% block body %}
-    {% if app.request.get('version') == 'last' %}
-        {% set currentVersion = article.currentVersion(false) %}
-    {% else %}
-        {% set currentVersion = article.currentVersion(true) %}
-    {% endif %}
     <h1>{{ currentVersion.title }}</h1>
     
-    <p>{{ currentVersion.content }}</p>
+    <div>
+        {{ currentVersion.content|raw|nl2br }}
+    </div>
 {% endblock body %}
