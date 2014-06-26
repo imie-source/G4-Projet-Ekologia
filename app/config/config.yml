@@ -77,3 +77,5 @@ fos_user:
     registration:
         form:
             type: ekologia_user_registration
+    group:
+        group_class: Ekologia\UserBundle\Entity\Group

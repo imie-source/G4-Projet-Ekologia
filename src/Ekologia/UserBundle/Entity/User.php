@@ -97,6 +97,15 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="Ekologia\MainBundle\Entity\Tag", cascade={"persist"}, mappedBy="users")
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ekologia\UserBundle\Entity\Group")
+     * @ORM\JoinTable(name="eko_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
     
     private $interests;
     
