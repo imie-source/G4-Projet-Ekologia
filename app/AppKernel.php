@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Ekologia\CMSBundle\EkologiaCMSBundle(),
             new Ekologia\WikiAdminBundle\EkologiaWikiAdminBundle(),
             new Ekologia\WikiGroupBundle\EkologiaWikiGroupBundle(),
+            new Ekologia\MenuBundle\EkologiaMenuBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
