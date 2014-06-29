@@ -98,16 +98,6 @@ class User extends BaseUser
      */
     private $tags;
     
-    /**
-     * @ORM\OneToMany(targetEntity="Ekologia\ArticleBundle\Entity\Version", cascade={"persist"}, mappedBy="user")
-     */
-    private $versions;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Ekologia\ArticleBundle\Entity\Commentaire", cascade={"persist"}, mappedBy="user")
-     */
-    private $commentaires;
-    
     private $interests;
     
     
@@ -416,13 +406,4 @@ class User extends BaseUser
         }
         return $this->interests;
     }
-    public function getVersions() {
-        return $this->versions;
-    }
-
-    public function getCommentaires() {
-        return $this->commentaires;
-    }
-
-
 }

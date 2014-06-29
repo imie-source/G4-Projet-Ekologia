@@ -33,12 +33,8 @@ class Tag
      */
     private $users;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Ekologia\ArticleBundle\Entity\Article", inversedBy="tags", cascade={"persist"})
-     */
-    private $articles;
 
-        /**
+    /**
      * Get id
      *
      * @return integer 
@@ -109,14 +105,5 @@ class Tag
     public function getUsers()
     {
         return $this->users;
-    }
-    
-    /**
-     * Get articles
-     * 
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getArticles() {
-        return $this->articles;
     }
 }
