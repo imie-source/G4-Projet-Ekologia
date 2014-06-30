@@ -194,4 +194,16 @@ class PageController extends ArticleController {
     protected function getVersionClassName() {
         
     }
+    
+    /** {@inheritDoc} */
+    protected function getParentList(Request $request) {
+        $list = $this->getDoctrine()
+                     ->getRepository($this->getArticleRepositoryName())
+                     ->findAll();
+        $result = array();
+        foreach ($list as $page) {
+            $result[$page->getId()] = $page->getCurrentVersion(false)->getTitle();
+        }
+        return $result;
+    }
 }

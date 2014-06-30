@@ -18,13 +18,13 @@ class Version extends AbstractVersion {
     
     /**
      * @var string
-     * @ORM\Column(name="css", type="text")
+     * @ORM\Column(name="css", type="text", nullable=true)
      */
     private $css;
     
     /**
      * @var string
-     * @ORM\Column(name="js", type="text")
+     * @ORM\Column(name="js", type="text", nullable=true)
      */
     private $js;
     

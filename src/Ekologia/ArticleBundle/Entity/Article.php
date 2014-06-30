@@ -87,9 +87,15 @@ class Article {
     /**
      * Version used in forms
      * 
-     * @var type \Ekologia\ArticleBundle\Entity\Version
+     * @var \Ekologia\ArticleBundle\Entity\Version
      */
     protected $version;
+    
+    /**
+     * Article id used in forms
+     * @var integer
+     */
+    protected $parentId;
     
     
     public function __construct() {
@@ -346,11 +352,29 @@ class Article {
     }
     
     /**
-     * Get the version of the article - us for forms
+     * Get the version of the article - use for forms
      * @return \Ekologia\ArticleBundle\Entity\Version
      */
     public function getVersion() {
         return $this->version;
+    }
+    
+    /**
+     * Set the parent id - use for forms
+     * @param integer $parentId
+     * @return \Ekologia\ArticleBundle\Entity\Article
+     */
+    public function setParentId($parentId) {
+        $this->parentId = $parentId;
+        return $this;
+    }
+    
+    /**
+     * Get the parent id - use for forms
+     * @return integer
+     */
+    public function getParentId() {
+        return $this->parentId;
     }
     
     /**

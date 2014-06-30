@@ -134,7 +134,12 @@ abstract class ArticleController extends AbstractArticleController
         if ($this->canCreate($request)) {
             $articleClassName = $this->getArticleClassName();
             $article = new $articleClassName;
-            $form = $this->createForm($this->getArticleFormType(), $article, array('creation' => true));
+            $options = array('creation' => true);
+            $parentList = $this->getParentList($request);
+            if ($parentList !== null) {
+                $options['parentList'] = $parentList;
+            }
+            $form = $this->createForm($this->getArticleFormType(), $article, $options);
             if ($request->getMethod() === 'POST') {
                 $form->bind($request);
                 if ($form->isValid()) {
@@ -143,6 +148,10 @@ abstract class ArticleController extends AbstractArticleController
                     $article->getVersion()->setUser($this->getUser());
                     $article->addVersion($article->getVersion());
                     $article->setVersion(null);
+                    $parent = $this->getDoctrine()
+                                   ->getRepository($this->getArticleRepositoryName())
+                                   ->find($article->getParentId());
+                    $parent->addChildren($article);
                     return $whenOk($request, $article);
                 } else {
                     return $whenBadRequest($request, $form);
@@ -221,7 +230,12 @@ abstract class ArticleController extends AbstractArticleController
         if (isset($article)) {
             if ($this->canUpdate($request, $article)) {
                 $article->setVersion($article->getCurrentVersion(false));
-                $form = $this->createForm($this->getArticleFormType(), $article);
+                $options = array();
+                $parentList = $this->getParentList($request);
+                if ($parentList !== null) {
+                    $options['parentList'] = $parentList;
+                }
+                $form = $this->createForm($this->getArticleFormType(), $article, $options);
                 if ($request->getMethod() === 'POST') {
                     $form->bind($request);
                     if ($form->isValid()) {
@@ -229,6 +243,14 @@ abstract class ArticleController extends AbstractArticleController
                         $version->setDateVersion(new \DateTime);
                         $article->addVersion($version);
                         $article->setVersion(null);
+                        $parent = $this->getDoctrine()
+                                       ->getRepository($this->getArticleRepositoryName())
+                                       ->find($article->getParentId());
+                        $oldParent = $article->getParent();
+                        if (isset($oldParent)) {
+                            $olParent->removeChildren($article);
+                        }
+                        $parent->addChildren($article);
                         return $whenOk($request, $article);
                     } else {
                         return $whenBadRequest($request, $form);
@@ -455,4 +477,13 @@ abstract class ArticleController extends AbstractArticleController
      * @see \Ekologia\ArticleBundle\Entity\ArticleRepository
      */
     protected abstract function getArticleRepositoryName();
+    
+    /**
+     * Returns the available parent list of the article.
+     * 
+     * @return The parent list of the article (default: null)
+     */
+    protected function getParentList(Request $request) {
+        return null;
+    }
 }

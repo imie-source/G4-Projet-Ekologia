@@ -37,10 +37,12 @@ class ArticleFormType extends AbstractType {
             $builder->add('deletable', 'checkbox', array('required' => false, 'label' => 'ekologia.article.form.article.deletable.label'));
         }
         if (isset($options['parentList'])) {
-            $builder->add('parent', 'collection', array(
+            $builder->add('parentId', 'choice', array(
                 'choices' => $options['parentList'],
                 'required' => false,
-                'label' => 'ekologia.article.form.article.parent.label'
+                'label' => 'ekologia.article.form.article.parent.label',
+                'empty_data' => null,
+                'empty_value' => 'ekologia.article.form.article.parent.none'
             ));
         }
     }
