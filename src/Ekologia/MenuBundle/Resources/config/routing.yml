@@ -1,0 +1,9 @@
+ekologia_menu_homepage:
+    pattern:  /menu
+    defaults: { _controller: EkologiaMenuBundle:Menu:index }
+    
+ekologia_menu_treepage:
+    pattern: /menu/treepage/{parent}
+    defaults: { _controller: EkologiaMenuBundle:Menu:treePage }
+    options:
+        expose: true
