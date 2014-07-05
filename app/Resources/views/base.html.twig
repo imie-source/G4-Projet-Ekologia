@@ -1,23 +1,3 @@
-{#<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        
-        {% block body %}{% endblock %}
-        
-        
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
-{{ asset('css/blog.css') }}
-#}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
@@ -61,13 +41,22 @@
                             <div class="panel-heading">
                                 Mon compte
                             </div>
-                            <div class="panel-body">
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Informations</a></li>
-                                    <li><a href="#">Mes groupes</a></li>
-                                    <li><a href="#">Déconnexion</a></li>
-                                </ul>
-                            </div>
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <div class="panel-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="disabled">Informations</a></li>
+                                        <li><a href="#" class="disabled">Mes groupes</a></li>
+                                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div class="panel-body">
+                                    <ul class="list-unstyled">
+                                        <li><a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
+                                        <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -78,23 +67,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8">
-                        <ul class="nav nav-pills">
-                            <li class="active"><a href="{{ path('homepage') }}">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Page 2 <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu multi-level">
-                                    <li><a href="#">Sous page 2.1</a></li>
-                                    <li><a href="#">Sous Page 2.2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Groupes</a></li>
-                            <li><a href="#">La communauté</a></li>
-                            <li><a href="#">Administration</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i></a></li>
-                        </ul>
+                        {{ render(controller("EkologiaMenuBundle:View:root")) }}
                     </div>
                     <div class="col-sm-4">
                         <form method="post" action="#" class="form-inline">
@@ -110,15 +83,7 @@
             </div>
         </div>
 
-        <div id="breadcrumb">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li class="active">Xyz</li>
-                </ol>
-            </div>
-        </div>
+        {% block breadcrumb %}{% endblock %}
 
         <div id="body">
             <div class="container">

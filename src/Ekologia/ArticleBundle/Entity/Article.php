@@ -403,4 +403,14 @@ class Article {
         }
         return null;
     }
+    
+    public function getPathToArticle() {
+        $path = array();
+        $element = $this;
+        while ($element !== null) {
+            $path[] = $element;
+            $element = $element->getParent();
+        }
+        return array_reverse($path);
+    }
 }

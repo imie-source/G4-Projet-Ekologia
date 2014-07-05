@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Menu
  *
  * @ORM\Table(name="eko_menu")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ekologia\MenuBundle\Entity\MenuRepository")
  */
 class Menu {
 
@@ -60,6 +60,13 @@ class Menu {
      * @ORM\Column(name="language", type="string", length=255, nullable=true)
      */
     protected $language;
+
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="order", type="integer", nullable=false)
+     */
+    protected $order;
 
     /**
      * Get id
@@ -140,9 +147,10 @@ class Menu {
     }
 
     /**
-     * Set article language
+     * Set menu language
+     * 
      * @param string $language
-     * @return \Ekologia\ArticleBundle\Entity\Article This object
+     * @return \Ekologia\MenuBundle\Entity\Menu This object
      */
     public function setLanguage($language) {
         $this->language = $language;
@@ -150,11 +158,39 @@ class Menu {
     }
 
     /**
-     * Get article language
+     * Get menu language
+     * 
      * @return string
      */
     public function getLanguage() {
         return $this->language;
     }
 
+    /**
+     * Set menu order
+     * 
+     * @param integer $order
+     * @return \Ekologia\MenuBundle\Entity\Menu This object
+     */
+    public function setOrder($order) {
+        $this->order = $order;
+        return $this;
+    }
+
+    /**
+     * Get menu order
+     * 
+     * @return integer
+     */
+    public function getOrder() {
+        return $this->order;
+    }
+    
+    public function getOrderedChildren() {
+        $children = $this->getChildren()->toArray();
+        usort($children, function($c1, $c2){
+            return $c1->getOrder() - $c2->getOrder();
+        });
+        return $children;
+    }
 }

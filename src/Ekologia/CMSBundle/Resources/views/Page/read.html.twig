@@ -18,6 +18,24 @@
     </script>
 {% endblock %}
 
+{% block breadcrumb %}
+    <div id="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('homepage') }}">Ekologia</a></li>
+                
+                {% for element in article.pathToArticle %}
+                    <li {% if loop.last %}class="active"{% endif %}>
+                        <a href="{{ path('ekologia_cms_page_read', {'canonical': element.canonical}) }}">
+                            {{ element.currentVersion.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
 {% block body %}
     <h1>{{ currentVersion.title }}</h1>
     

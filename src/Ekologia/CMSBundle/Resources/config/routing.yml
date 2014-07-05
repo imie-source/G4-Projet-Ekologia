@@ -13,3 +13,7 @@ ekologia_cms_page_update:
 ekologia_cms_page_remove:
     pattern:  /page/remove/{canonical}
     defaults: { _controller: EkologiaCMSBundle:Page:remove }
+
+ekologia_cms_list:
+    pattern:  /pages
+    defaults: { _controller: EkologiaCMSBundle:List:list }

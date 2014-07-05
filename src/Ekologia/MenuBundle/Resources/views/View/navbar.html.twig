@@ -1,0 +1,22 @@
+<ul class="nav nav-pills">
+    {% for child in menu.orderedChildren %}
+        {% if child.children|length > 0 %}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {{ child.name }} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu multi-level">
+                    {% for subchild in child.orderedChildren %}
+                        {% if subchild.parameters is defined %}
+                            <li><a href="{{ path(subchild.route, subchild.parameters) }}">{{ subchild.name }}</a></li>
+                        {% else %}
+                            <li><a href="{{ path(subchild.route) }}">{{ subchild.name }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li><a href="{{ path(child.route, child.parameters) }}">{{ child.name }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>

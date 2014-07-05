@@ -21,7 +21,15 @@
                     <h2>{{ 'ekologia.user.register.tab-general-info.title'|trans }}</h2>
                     <div class="form-horizontal">
                         <div class="col-sm-6">
-                            {{ form_row(form.userType) }}
+                            {% if app.request.method == 'GET' and app.request.get('type') is defined %}
+                                {% if app.request.get('type') == 'c' %}
+                                    {{ form_row(form.userType, {value: 'cuser'}) }}
+                                {% else %}
+                                    {{ form_row(form.userType, {value: 'puser'}) }}
+                                {% endif %}
+                            {% else %}
+                                {{ form_row(form.userType) }}
+                            {% endif %}
                             
                             {{ form_row(form.username) }}
                             

@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% block breadcrumb %}{% endblock %}
+
 {% block body %}
     <div class="row">
         <div class="col-sm-8">
@@ -10,7 +12,7 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Page Facebook</h2>
+                    <h2>{{ 'ekologia.main.index.facebook.page'|trans }}</h2>
                     <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Ffr-fr.facebook.com%2Fpages%2FEcolocoop%2F316720805038502&amp;height=400&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23DDDDDD&amp;stream=false&amp;header=true&amp;appId=215550098468187"
                             scrolling="no"
                             frameborder="0"
@@ -18,7 +20,7 @@
                             allowTransparency="true"></iframe>
                 </div>
                 <div class="col-sm-6">
-                    <h2>Groupe facebook</h2>
+                    <h2>{{ 'ekologia.main.index.facebook.group'|trans }}</h2>
                     <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Ffr-fr.facebook.com%2Fpages%2FEcolocoop%2F316720805038502&amp;height=400&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23DDDDDD&amp;stream=false&amp;header=true&amp;appId=215550098468187"
                             scrolling="no"
                             frameborder="0"
@@ -29,74 +31,74 @@
         </div>
         <div class="col-sm-4">
             <div class="btn-group">
-                <a href="#" class="btn btn-default">Faire un don</a>
-                <a href="#" class="btn btn-default">Inscription personne physique</a>
+                <a href="#" class="btn btn-default">{{ 'ekologia.main.index.donation'|trans }}</a>
+                <a href="{{ path('fos_user_registration_register', {'type': 'p'}) }}" class="btn btn-default">{{ 'ekologia.main.index.register.puser'|trans }}</a>
             </div>
 
             <div class="aside">
-                <h4>Les personnes morales adhérentes</h4>
+                <h4>{{ 'ekologia.main.index.member.cuser'|trans }}</h4>
 
                 <div class="row">
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-rouge.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette rouge</div>
                         </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-bleue.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette bleue</div>
                         </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-bleue.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette bleue 2</div>
                         </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-rouge.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette rouge 2</div>
                         </a>
                     </div>
                 </div>
 
-                <a href="#" class="btn btn-default">Inscription personne morale</a>
+                <a href="{{ path('fos_user_registration_register', {'type': 'c'}) }}" class="btn btn-default">{{ 'ekologia.main.index.register.cuser'|trans }}</a>
             </div>
 
             <div class="aside">
-                <h4>Nos partenaires</h4>
+                <h4>{{ 'ekologia.main.index.member.partner'|trans }}</h4>
 
                 <div class="row">
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-rouge.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette rouge</div>
                         </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-bleue.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette bleue</div>
                         </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-bleue.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-bleue.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette bleue 2</div>
                         </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
-                            <img src="design/img/vignette-rouge.png" alt="Vignette rouge" />
+                            <img src="{{ asset('img/vignette-rouge.png') }}" alt="Vignette rouge" />
                             <div class="caption">Vignette rouge 2</div>
                         </a>
                     </div>
                 </div>
 
-                <a href="#" class="btn btn-default">Devenir partenaire</a>
+                <a href="#" class="btn btn-default">{{ 'ekologia.main.index.member.becomepartner'|trans }}</a>
             </div>
         </div>
     </div>

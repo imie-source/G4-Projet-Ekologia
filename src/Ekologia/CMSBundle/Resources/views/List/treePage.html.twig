@@ -1,0 +1,10 @@
+{% for page in pages %}
+    <li>
+        <a href="{{ path('ekologia_cms_page_update', {canonical: page.canonical}) }}">{{ page.currentVersion(false).title }}</a>
+        {% if page.children|length > 0 %}
+            <ul>
+                {% include 'EkologiaCMSBundle:List:treePage.html.twig' with {'pages': page.children} %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}

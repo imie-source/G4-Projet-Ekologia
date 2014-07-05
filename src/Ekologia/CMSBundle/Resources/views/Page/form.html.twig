@@ -25,4 +25,6 @@
         
         {{ form_row(form.save) }}
     {{ form_end(form) }}
+    
+    <a href="{{ path('ekologia_cms_list') }}" class="btn btn-default">{{ 'ekologia.cms.page.form.returntolist'|trans }}</a>
 {% endblock body %}
