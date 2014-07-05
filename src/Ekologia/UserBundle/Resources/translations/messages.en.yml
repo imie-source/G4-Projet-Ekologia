@@ -3,78 +3,78 @@ ekologia:
         registration:
             cuser:
                 name:
-                    label: name of the legal entity
+                    label: Name of the legal entity
                 activity:
-                    label: activity
+                    label: Activity
                 type:
-                    label: type
-                    association: association
-                    business: business
-                    ngo: non-governmental organisation(NGO)
-                    media: media
-                    syndicate: syndicate
+                    label: Type
+                    association: Association
+                    business: Business
+                    ngo: Non-governmental organisation(NGO)
+                    media: Media
+                    syndicate: Syndicate
             puser:
                 firstname: 
-                    label: first name
+                    label: First name
                 lastname:
-                    label: last name
+                    label: Last name
                 birthdate:
-                    label: birthdate
+                    label: Birthdate
             address:
                 street:
-                    label: street
+                    label: Street
                 zip-code:
-                    label: zip code
+                    label: Zip code
                 city:
-                    label: city
+                    label: City
             avatar:
-                label: avatar
+                label: Avatar
             phone-number:
-                label: phone number
+                label: Phone number
             description:
-                label: description
+                label: Description
             country:
-                label: country
+                label: Country
             user-type:
-                label: user type
-                cuser: legal entity
-                puser: individual
+                label: User type
+                cuser: Legal entity
+                puser: Individual
         cuser:
             name:
-                not-blank: the field is required
+                not-blank: The field is required
             type:
-                not-blank: the field is required
+                not-blank: The field is required
             activity:
-                not-blank: the field is required
+                not-blank: The field is required
         puser:
             firstname:
-                not-blank: the field is required
+                not-blank: The field is required
             lastname:
-                not-blank: the field is required
+                not-blank: The field is required
             birthdate:
-                date-type: birthdate
+                date-type: Birthdate
         user:
             address-zip-code:
-                regex: zip code regex
+                regex: Zip code regex
             avatar:
-                url: avatar url
+                url: Avatar url
             country:
-                not-blank: the field is required
-            is-valid-join: valid registration
+                not-blank: The field is required
+            is-valid-join: Valid registration
         register:
             tab-general-info:
-                name: name
-                title: title
+                name: Name
+                title: Title
             tab-description:
-                name: name
-                title: title
+                name: Name
+                title: Title
             tab-interest:
-                name: name
-                title: title
-                selected: selected
+                name: Name
+                title: Title
+                selected: Selected
                 interest:
-                    placeholder: placeholder
-                    delete: delete
-            avatar-example: example of avatar
-            reset: reset
-              submit: submit
+                    placeholder: Placeholder
+                    delete: Delete
+            avatar-example: Example of avatar
+            reset: Reset
+              submit: Submit
