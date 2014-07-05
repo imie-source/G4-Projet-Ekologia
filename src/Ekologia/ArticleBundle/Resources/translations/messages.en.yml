@@ -1,0 +1,40 @@
+ekologia:
+    article:
+        article:
+            visibility:
+                not-blank: the field is required
+            dateCreation:
+                not-blank: the field is required
+        version:
+            dateVersion:
+                not-blank: the field is required
+        form:
+            article:
+                visibility:
+                    label: visibility
+                    private: private
+                    protected: protected
+                    public: public
+                version:
+                    label: version
+                tags:
+                    label: tags
+                submit:
+                    label: submit
+                deletable:
+                    label: deletable
+                parent:
+                    label: parent
+                    none: none
+            version:
+                title:
+                    label: title
+                content:
+                    label: content
+                active:
+                    label: active
+            comment:
+                text:
+                    label: text
+                title:
+                    label: title
