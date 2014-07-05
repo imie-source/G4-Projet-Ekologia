@@ -1,40 +1,12 @@
 ekologia:
     article:
-        article:
-            visibility:
-                not-blank: le champ est obligatoire
-            dateCreation: 
-                not-blank: le champ est obligatoire
-        version:
-            dateVersion:
-                not-blank: le champ est obligatoire
         form:
             article:
-                visibility:
-                    label: visibilité
-                    private: privé
-                    protected: protégé
-                    public: public
-                version:
-                    label: version
-                tags:
-                    label: tags
-                submit:
-                    label: valider
-                deletable:
-                    label: effaçable
-                parent:
-                    label: parent
-                    none: aucun
-            version:
-                title:
-                    label: titre
-                content:
-                    label: contenu
-                active:
-                    label: actif
-            comment:
-                text:
-                    label: texte
-                title:
-                    label: titre
+                css:
+                    label: css
+                js:
+                    label: javascript
+    cms:
+        list:
+            title: titre de la liste
+            create: créer
