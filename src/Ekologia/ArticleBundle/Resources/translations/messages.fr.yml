@@ -2,39 +2,39 @@ ekologia:
     article:
         article:
             visibility:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
             dateCreation: 
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
         version:
             dateVersion:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
         form:
             article:
                 visibility:
-                    label: visibilité
-                    private: privé
-                    protected: protégé
-                    public: public
+                    label: Visibilité
+                    private: Privé
+                    protected: Protégé
+                    public: Public
                 version:
-                    label: version
+                    label: Version
                 tags:
-                    label: tags
+                    label: Tags
                 submit:
-                    label: valider
+                    label: Valider
                 deletable:
-                    label: effaçable
+                    label: Effaçable
                 parent:
-                    label: parent
-                    none: aucun
+                    label: Parent
+                    none: Aucun
             version:
                 title:
-                    label: titre
+                    label: Titre
                 content:
-                    label: contenu
+                    label: Contenu
                 active:
-                    label: actif
+                    label: Actif
             comment:
                 text:
-                    label: texte
+                    label: Texte
                 title:
-                    label: titre
+                    label: Titre
