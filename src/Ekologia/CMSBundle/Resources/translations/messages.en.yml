@@ -3,10 +3,10 @@ ekologia:
         form:
             article:
                 css:
-                    label: css
+                    label: Css
                 js:
-                    label: javascript
+                    label: Javascript
     cms:
         list:
-            title: list title
-            create: create
+            title: List title
+            create: Create
