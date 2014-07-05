@@ -1,0 +1,80 @@
+ekologia:
+    user:
+        registration:
+            cuser:
+                name:
+                    label: nom de la personne morale
+                activity:
+                    label: activité
+                type:
+                    label: type
+                    association: association
+                    business: entreprise
+                    ngo: organisation non-gouvernementale(ONG)
+                    media: presse
+                    syndicate: syndicat
+            puser:
+                firstname:
+                    label: prénom
+                lastname:
+                    label: nom de famille
+                birthdate:
+                    label: date de naissance
+            address:
+                street:
+                    label: rue
+                zip-code:
+                    label: code postal
+                city:
+                    label: ville
+            avatar:
+                label: photo de profil
+            phone-number:
+                label: numéro de téléphone
+            description:
+                label: description
+            country:
+                label: pays
+            user-type:
+                label: type d'utilisateur
+                cuser: personne physique
+                puser: personne morale
+        cuser:
+            name:
+                not-blank: le champ est obligatoire
+            type:
+                not-blank: le champ est obligatoire
+            activity:
+                not-blank: le champ est obligatoire
+        puser:
+            firstname:
+                not-blank: le champ est obligatoire
+            lastname:
+                not-blank: le champ est obligatoire
+            birthdate:
+                date-type: date
+        user:
+            address-zip-code: 
+                regex: expression régulière pour le code postal
+            avatar:
+                url: adresse de la photo de profil (url)
+            country:
+                not-blank: le champ est obligatoire
+            is-valid-join: inscription valide
+        register:
+            tab-general-info:
+                name: nom
+                title: titre
+            tab-description:
+                name: nom
+                title: titre
+            tab-interest:
+                name: nom
+                title: titre
+                selected: séléctionné
+                interest:
+                    placeholder: espace réservé
+                    delete: supprimer
+            avatar-example: exemple de photo de profil
+            reset: réinitialiser
+            submit: valider
