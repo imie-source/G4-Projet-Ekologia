@@ -2,39 +2,39 @@ ekologia:
     article:
         article:
             visibility:
-                not-blank: the field is required
+                not-blank: The field is required
             dateCreation:
-                not-blank: the field is required
+                not-blank: The field is required
         version:
             dateVersion:
-                not-blank: the field is required
+                not-blank: The field is required
         form:
             article:
                 visibility:
-                    label: visibility
-                    private: private
-                    protected: protected
-                    public: public
+                    label: Visibility
+                    private: Private
+                    protected: Protected
+                    public: Public
                 version:
-                    label: version
+                    label: Version
                 tags:
-                    label: tags
+                    label: Tags
                 submit:
-                    label: submit
+                    label: Submit
                 deletable:
-                    label: deletable
+                    label: Deletable
                 parent:
-                    label: parent
-                    none: none
+                    label: Parent
+                    none: None
             version:
                 title:
-                    label: title
+                    label: Title
                 content:
-                    label: content
+                    label: Content
                 active:
-                    label: active
+                    label: Active
             comment:
                 text:
-                    label: text
+                    label: Text
                 title:
-                    label: title
+                    label: Title
