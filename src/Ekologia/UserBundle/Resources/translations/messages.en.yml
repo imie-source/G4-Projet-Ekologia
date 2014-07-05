@@ -41,16 +41,16 @@ ekologia:
                 puser: individual
         cuser:
             name:
-                not-blank: not-blank
+                not-blank: the field is required
             type:
-                not-blank: not-blank
+                not-blank: the field is required
             activity:
-                not-blank: not-blank
+                not-blank: the field is required
         puser:
             firstname:
-                not-blank: not-blank
+                not-blank: the field is required
             lastname:
-                not-blank: not-blank
+                not-blank: the field is required
             birthdate:
                 date-type: birthdate
         user:
@@ -59,7 +59,7 @@ ekologia:
             avatar:
                 url: avatar url
             country:
-                not-blank: not-blank
+                not-blank: the field is required
             is-valid-join: valid registration
         register:
             tab-general-info:
