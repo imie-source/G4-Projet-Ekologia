@@ -1,0 +1,12 @@
+ekologia:
+    article:
+        form:
+            article:
+                css:
+                    label: css
+                js:
+                    label: javascript
+    cms:
+        list:
+            title: list title
+            create: create
