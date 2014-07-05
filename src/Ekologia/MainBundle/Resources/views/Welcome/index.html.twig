@@ -1,14 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
     <div class="row">
         <div class="col-sm-8">
             <div class="content">
@@ -27,7 +19,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h2>Page Facebook</h2>
-                    <div class="fb-like-box" data-href="https://www.facebook.com/pages/Ekologia/274611082672069?fref=ts" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+                    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FEkologia%2F274611082672069%3Ffref%3Dts&amp;width&amp;height=395&amp;colorscheme=light&amp;show_faces=false&amp;header=false&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:395px;" allowTransparency="true"></iframe>
                 </div>
                 <div class="col-sm-6">
                     <h2>Groupe facebook</h2>
