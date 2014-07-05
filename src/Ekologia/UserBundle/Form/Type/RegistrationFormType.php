@@ -28,8 +28,8 @@ class RegistrationFormType extends BaseType
         ));
         $builder->add('userType', 'choice', array(
             'choices' => array(
-                'cuser' => 'ekologia.user.registrationformtype.usertype.cuser',
-                'puser' => 'ekologia.user.registrationformtype.usertype.puser'
+                'cuser' => 'ekologia.user.registration.user-type.cuser',
+                'puser' => 'ekologia.user.registration.user-type.puser'
             ), 'required' => true,
             'label' => 'ekologia.user.registration.user-type.label'
         ));

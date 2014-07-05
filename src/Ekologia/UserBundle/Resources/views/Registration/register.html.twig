@@ -71,7 +71,7 @@
                             {% set avatar = form.avatar.vars.value is defined and form.avatar.vars.value is not empty ? form.avatar.vars.value : asset(app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.basePath ~ '/img/avatar-default.png') %}
                             {{ form_row(form.avatar, {'attr': {'value': avatar} }) }}
                             
-                            <img src="{{ avatar }}" alt="{{ 'ekologia.user.registration.avatar-example'|trans }}" class="avatar" id="registration-avatar-show" />
+                            <img src="{{ avatar }}" alt="{{ 'ekologia.user.register.avatar-example'|trans }}" class="avatar" id="registration-avatar-show" />
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                             <div id="form-add-interest" class="form-horizontal">
                                 <div class="form-group">
                                     <div class="col-sm-9">
-                                        <input type="text" name="interest" id="form-add-interest-tag" placeholder="Entrez votre intérêt" class="form-control" />
+                                        <input type="text" name="interest" id="form-add-interest-tag" placeholder="{{ 'ekologia.user.register.tab-interest.interest.placeholder'|trans }}" class="form-control" />
                                     </div>
                                     <div class="col-sm-3">
                                         <input type="submit" value="Ajouter" class="btn btn-primary" id="form-add-interest-add" />
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <table class="table table-hover table-striped table-bordered" id="table-interest" data-prototype="<tr><td>__value__</td><td><span class='btn btn-danger btn-xs' data-target='__name__'><i class='glyphicon glyphicon-remove remove'></i> Supprimer</span></td></tr>">
+                            <table class="table table-hover table-striped table-bordered" id="table-interest" data-prototype="<tr><td>__value__</td><td><span class='btn btn-danger btn-xs' data-target='__name__'><i class='glyphicon glyphicon-remove remove'></i> {{ 'ekologia.user.register.tab-interest.interest.delete'|trans }}</span></td></tr>">
                                 <thead><tr><th colspan="2">{{ 'ekologia.user.register.tab-interest.selected'|trans }}</th></tr></thead>
                                 <tbody>
                                     {% for interest in form.interests %}
@@ -126,7 +126,7 @@
                                             <td>
                                                 <span class="btn btn-danger btn-xs">
                                                     <i class="glyphicon glyphicon-remove remove"></i>
-                                                    Supprimer
+                                                    {{ 'ekologia.user.register.tab-interest.interest.delete'|trans }}
                                                 </span>
                                             </td>
                                         </tr>
@@ -145,8 +145,8 @@
         </div>
         
         <div class="pull-right marginTop10">
-            <input class="btn" name="annuler" type="reset" />
-            <input class="btn btn-primary" name="valider" type="submit" />
+            <input class="btn" name="{{ 'ekologia.user.register.reset'|trans }}" type="reset" />
+            <input class="btn btn-primary" name="{{ 'ekologia.user.register.submit'|trans }}" type="submit" />
         </div>
     {{ form_end(form) }}
     <div id="part-subuser-removed" class="hidden"></div>
