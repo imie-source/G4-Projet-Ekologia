@@ -1,0 +1,14 @@
+ekologia:
+    main:
+        index:
+            facebook:
+                page: Page Facebook
+                group: Groupe Facebook
+            donation: Faire un don
+            register:
+                puser: Adhérer en tant que personne physique
+                cuser: Adhérer en tant que personne morale
+            member:
+                cuser: Utilisateur personne morale
+                partner: Partenaire
+                becomepartner: Devenir partenaire
