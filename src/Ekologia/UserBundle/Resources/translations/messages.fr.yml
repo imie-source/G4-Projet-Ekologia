@@ -3,78 +3,78 @@ ekologia:
         registration:
             cuser:
                 name:
-                    label: nom de la personne morale
+                    label: Nom de la personne morale
                 activity:
-                    label: activité
+                    label: Activité
                 type:
-                    label: type
-                    association: association
-                    business: entreprise
-                    ngo: organisation non-gouvernementale(ONG)
-                    media: presse
-                    syndicate: syndicat
+                    label: Type
+                    association: Association
+                    business: Entreprise
+                    ngo: Organisation non-gouvernementale(ONG)
+                    media: Presse
+                    syndicate: Syndicat
             puser:
                 firstname:
-                    label: prénom
+                    label: Prénom
                 lastname:
-                    label: nom de famille
+                    label: Nom de famille
                 birthdate:
-                    label: date de naissance
+                    label: Date de naissance
             address:
                 street:
-                    label: rue
+                    label: Rue
                 zip-code:
-                    label: code postal
+                    label: Code postal
                 city:
-                    label: ville
+                    label: Ville
             avatar:
-                label: photo de profil
+                label: Photo de profil
             phone-number:
-                label: numéro de téléphone
+                label: Numéro de téléphone
             description:
-                label: description
+                label: Description
             country:
-                label: pays
+                label: Pays
             user-type:
-                label: type d'utilisateur
-                cuser: personne physique
-                puser: personne morale
+                label: Type d'utilisateur
+                cuser: Personne physique
+                puser: Personne morale
         cuser:
             name:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
             type:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
             activity:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
         puser:
             firstname:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
             lastname:
-                not-blank: le champ est obligatoire
+                not-blank: Le champ est obligatoire
             birthdate:
-                date-type: date
+                date-type: Date
         user:
             address-zip-code: 
-                regex: expression régulière pour le code postal
+                regex: Expression régulière pour le code postal
             avatar:
-                url: adresse de la photo de profil (url)
+                url: Adresse de la photo de profil (url)
             country:
-                not-blank: le champ est obligatoire
-            is-valid-join: inscription valide
+                not-blank: Le champ est obligatoire
+            is-valid-join: Inscription valide
         register:
             tab-general-info:
-                name: nom
-                title: titre
+                name: Nom
+                title: Titre
             tab-description:
-                name: nom
-                title: titre
+                name: Nom
+                title: Titre
             tab-interest:
-                name: nom
-                title: titre
-                selected: séléctionné
+                name: Nom
+                title: Titre
+                selected: Séléctionné
                 interest:
-                    placeholder: espace réservé
-                    delete: supprimer
-            avatar-example: exemple de photo de profil
-            reset: réinitialiser
-            submit: valider
+                    placeholder: Espace réservé
+                    delete: Supprimer
+            avatar-example: Exemple de photo de profil
+            reset: Réinitialiser
+            submit: Valider
