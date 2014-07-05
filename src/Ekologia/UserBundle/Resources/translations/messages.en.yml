@@ -1,0 +1,80 @@
+ekologia:
+    user:
+        registration:
+            cuser:
+                name:
+                    label: name of the legal entity
+                activity:
+                    label: activity
+                type:
+                    label: type
+                    association: association
+                    business: business
+                    ngo: non-governmental organisation(NGO)
+                    media: media
+                    syndicate: syndicate
+            puser:
+                firstname: 
+                    label: first name
+                lastname:
+                    label: last name
+                birthdate:
+                    label: birthdate
+            address:
+                street:
+                    label: street
+                zip-code:
+                    label: zip code
+                city:
+                    label: city
+            avatar:
+                label: avatar
+            phone-number:
+                label: phone number
+            description:
+                label: description
+            country:
+                label: country
+            user-type:
+                label: user type
+                cuser: legal entity
+                puser: individual
+        cuser:
+            name:
+                not-blank: not-blank
+            type:
+                not-blank: not-blank
+            activity:
+                not-blank: not-blank
+        puser:
+            firstname:
+                not-blank: not-blank
+            lastname:
+                not-blank: not-blank
+            birthdate:
+                date-type: birthdate
+        user:
+            address-zip-code:
+                regex: zip code regex
+            avatar:
+                url: avatar url
+            country:
+                not-blank: not-blank
+            is-valid-join: valid registration
+        register:
+            tab-general-info:
+                name: name
+                title: title
+            tab-description:
+                name: name
+                title: title
+            tab-interest:
+                name: name
+                title: title
+                selected: selected
+                interest:
+                    placeholder: placeholder
+                    delete: delete
+            avatar-example: example of avatar
+            reset: reset
+              submit: submit
