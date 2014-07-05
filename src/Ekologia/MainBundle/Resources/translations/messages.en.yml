@@ -1,0 +1,14 @@
+ekologia:
+    main:
+        index:
+            facebook:
+                page: Facebook page
+                group: Facebook group
+            donation: Donate
+            register:
+                puser: Register as an individual
+                cuser: Register as a legal entity
+            member:
+                cuser: Legal entity user
+                partner: Partner
+                becomepartner: Become a partner
