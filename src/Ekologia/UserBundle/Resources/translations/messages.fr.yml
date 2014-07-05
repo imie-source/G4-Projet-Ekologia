@@ -3,26 +3,26 @@ ekologia:
         registration:
             cuser:
                 name:
-                    label: Nom de la personne morale
+                    label: Nom
                 activity:
                     label: Activité
                 type:
                     label: Type
                     association: Association
                     business: Entreprise
-                    ngo: Organisation non-gouvernementale(ONG)
+                    ngo: Organisation non-gouvernementale (ONG)
                     media: Presse
                     syndicate: Syndicat
             puser:
                 firstname:
                     label: Prénom
                 lastname:
-                    label: Nom de famille
+                    label: Nom
                 birthdate:
                     label: Date de naissance
             address:
                 street:
-                    label: Rue
+                    label: Numéro et rue
                 zip-code:
                     label: Code postal
                 city:
@@ -41,39 +41,39 @@ ekologia:
                 puser: Personne morale
         cuser:
             name:
-                not-blank: Le champ est obligatoire
+                not-blank: Le champ "nom" est obligatoire
             type:
-                not-blank: Le champ est obligatoire
+                not-blank: Le champ "type d'utilisateur" est obligatoire
             activity:
-                not-blank: Le champ est obligatoire
+                not-blank: Le champ "activité" est obligatoire
         puser:
             firstname:
-                not-blank: Le champ est obligatoire
+                not-blank: Le champ "prénom" est obligatoire
             lastname:
-                not-blank: Le champ est obligatoire
+                not-blank: Le champ "nom" est obligatoire
             birthdate:
-                date-type: Date
+                date-type: La date de naissance est invalide
         user:
             address-zip-code: 
-                regex: Expression régulière pour le code postal
+                regex: Code postal invalide
             avatar:
-                url: Adresse de la photo de profil (url)
+                url: URL de la photo de profil invalide
             country:
-                not-blank: Le champ est obligatoire
-            is-valid-join: Inscription valide
+                not-blank: Le champ "pays" est obligatoire
+            is-valid-join: Les informations spécifiques au type d'utilisateur sont invalides
         register:
             tab-general-info:
-                name: Nom
-                title: Titre
+                name: Informations générales
+                title: Informations générales
             tab-description:
-                name: Nom
-                title: Titre
+                name: Description
+                title: Description
             tab-interest:
-                name: Nom
-                title: Titre
-                selected: Séléctionné
+                name: Intérêts
+                title: Intérêts
+                selected: Intérêts sélectionnés
                 interest:
-                    placeholder: Espace réservé
+                    placeholder: Votre intérêt
                     delete: Supprimer
             avatar-example: Exemple de photo de profil
             reset: Réinitialiser

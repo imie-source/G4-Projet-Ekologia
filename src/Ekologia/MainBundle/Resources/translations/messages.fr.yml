@@ -6,9 +6,9 @@ ekologia:
                 group: Groupe Facebook
             donation: Faire un don
             register:
-                puser: Adhérer en tant que personne physique
-                cuser: Adhérer en tant que personne morale
+                puser: Inscription personne physique
+                cuser: Inscription personne morale
             member:
-                cuser: Utilisateur personne morale
+                cuser: Personnes morales
                 partner: Partenaire
                 becomepartner: Devenir partenaire

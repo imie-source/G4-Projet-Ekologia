@@ -8,5 +8,8 @@ ekologia:
                     label: Javascript
     cms:
         list:
-            title: Titre de la liste
-            create: Créer
+            title: Liste des pages
+            create: Créer une page
+        page:
+            form:
+                returntolist: Retourner à la liste

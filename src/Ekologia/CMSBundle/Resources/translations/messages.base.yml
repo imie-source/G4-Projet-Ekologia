@@ -10,3 +10,6 @@ ekologia:
         list:
             title:
             create:
+        page:
+            form:
+                returntolist:
