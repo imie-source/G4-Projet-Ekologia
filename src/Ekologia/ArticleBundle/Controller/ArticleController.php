@@ -243,14 +243,18 @@ abstract class ArticleController extends AbstractArticleController
                         $version->setDateVersion(new \DateTime);
                         $article->addVersion($version);
                         $article->setVersion(null);
-                        $parent = $this->getDoctrine()
+                        $parent = $article->getParentId() === null
+                                ? null
+                                : $this->getDoctrine()
                                        ->getRepository($this->getArticleRepositoryName())
                                        ->find($article->getParentId());
                         $oldParent = $article->getParent();
                         if (isset($oldParent)) {
                             $olParent->removeChildren($article);
                         }
-                        $parent->addChildren($article);
+                        if ($parent !== null) {
+                            $parent->addChildren($article);
+                        }
                         return $whenOk($request, $article);
                     } else {
                         return $whenBadRequest($request, $form);

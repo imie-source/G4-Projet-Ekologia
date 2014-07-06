@@ -66,8 +66,15 @@
         <div id="nav">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         {{ render(controller("EkologiaMenuBundle:View:root")) }}
+                    </div>
+                    <div class="col-sm-4">
+                        {% if is_granted('ROLE_WRITER') %}
+                            <ul class="nav nav-pills">
+                                <li><a href="{{ path('ekologia_cms_list') }}">Modifier les pages</a></li>
+                            </ul>
+                        {% endif %}
                     </div>
                     <div class="col-sm-4">
                         <form method="post" action="#" class="form-inline">
