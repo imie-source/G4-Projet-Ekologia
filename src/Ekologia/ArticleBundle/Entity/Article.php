@@ -298,7 +298,7 @@ class Article {
      * @param \Ekologia\ArticleBundle\Entity\Article $parent
      * @return \Ekologia\ArticleBundle\Entity\Article This object
      */
-    public function setParent(\Ekologia\ArticleBundle\Entity\Article $parent) {
+    public function setParent(\Ekologia\ArticleBundle\Entity\Article $parent=null) {
         $this->parent = $parent;
         return $this;
     }

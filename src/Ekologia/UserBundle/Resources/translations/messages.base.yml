@@ -78,3 +78,6 @@ ekologia:
             avatar-example:
             reset:
             submit:
+        success:
+            title:
+            description:

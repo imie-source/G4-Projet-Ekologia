@@ -148,10 +148,14 @@ abstract class ArticleController extends AbstractArticleController
                     $article->getVersion()->setUser($this->getUser());
                     $article->addVersion($article->getVersion());
                     $article->setVersion(null);
-                    $parent = $this->getDoctrine()
+                    $parent = $article->getParentId() === null
+                            ? null
+                            : $this->getDoctrine()
                                    ->getRepository($this->getArticleRepositoryName())
                                    ->find($article->getParentId());
-                    $parent->addChildren($article);
+                    if ($parent !== null) {
+                        $parent->addChildren($article);
+                    }
                     return $whenOk($request, $article);
                 } else {
                     return $whenBadRequest($request, $form);
@@ -250,7 +254,7 @@ abstract class ArticleController extends AbstractArticleController
                                        ->find($article->getParentId());
                         $oldParent = $article->getParent();
                         if (isset($oldParent)) {
-                            $olParent->removeChildren($article);
+                            $oldParent->removeChildren($article);
                         }
                         if ($parent !== null) {
                             $parent->addChildren($article);

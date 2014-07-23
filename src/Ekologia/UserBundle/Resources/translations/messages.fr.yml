@@ -78,3 +78,6 @@ ekologia:
             avatar-example: Exemple de photo de profil
             reset: Réinitialiser
             submit: Valider
+        success:
+            title: Votre inscription est terminée
+            description: Vous êtes maintenant inscrit(e) sur le site et avez été connecté(e).

@@ -78,3 +78,6 @@ ekologia:
             avatar-example: Example of avatar
             reset: Reset
             submit: Submit
+        success:
+            title: You are now registered
+            description: You are now registered and logged in on the site.
