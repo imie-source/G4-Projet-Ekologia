@@ -45,6 +45,11 @@ class PUser
      * @Assert\Date(message = "ekologia.user.puser.birthdate.date-type")
      */
     private $birthdate;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Ekologia\UserBundle\Entity\User")
+     */
+    private $user;
 
 
     /**
@@ -124,5 +129,27 @@ class PUser
     public function getBirthdate()
     {
         return $this->birthdate;
+    }
+
+    /**
+     * Set user
+     *
+     * @param User $user
+     * @return PUser
+     */
+    public function setUser(User $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

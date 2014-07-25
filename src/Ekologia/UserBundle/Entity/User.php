@@ -5,6 +5,8 @@ namespace Ekologia\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Ekologia\MainBundle\Entity\Tag;
 
 /**
  * User
@@ -99,13 +101,9 @@ class User extends BaseUser
     private $tags;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ekologia\UserBundle\Entity\Group")
-     * @ORM\JoinTable(name="eko_user_group",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-     * )
+     * @ORM\OneToMany(targetEntity="Ekologia\UserBundle\Entity\UserGroup", cascade={"persist"}, mappedBy="user")
      */
-    protected $groups;
+    private $userGroups;
     
     private $interests;
     
@@ -116,7 +114,8 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new ArrayCollection();
+        $this->userGroups = new ArrayCollection();
     }
 
     /**
@@ -316,10 +315,10 @@ class User extends BaseUser
     /**
      * Set puser
      *
-     * @param \Ekologia\UserBundle\Entity\PUser $puser
+     * @param PUser $puser
      * @return User
      */
-    public function setPuser(\Ekologia\UserBundle\Entity\PUser $puser = null)
+    public function setPuser(PUser $puser = null)
     {
         $this->puser = $puser;
 
@@ -329,7 +328,7 @@ class User extends BaseUser
     /**
      * Get puser
      *
-     * @return \Ekologia\UserBundle\Entity\PUser 
+     * @return PUser 
      */
     public function getPuser()
     {
@@ -339,10 +338,10 @@ class User extends BaseUser
     /**
      * Set cuser
      *
-     * @param \Ekologia\UserBundle\Entity\CUser $cuser
+     * @param CUser $cuser
      * @return User
      */
-    public function setCuser(\Ekologia\UserBundle\Entity\CUser $cuser = null)
+    public function setCuser(CUser $cuser = null)
     {
         $this->cuser = $cuser;
 
@@ -352,7 +351,7 @@ class User extends BaseUser
     /**
      * Get cuser
      *
-     * @return \Ekologia\UserBundle\Entity\CUser 
+     * @return CUser 
      */
     public function getCuser()
     {
@@ -362,10 +361,10 @@ class User extends BaseUser
     /**
      * Add tags
      *
-     * @param \Ekologia\MainBundle\Entity\Tag $tags
+     * @param Tag $tags
      * @return User
      */
-    public function addTag(\Ekologia\MainBundle\Entity\Tag $tags)
+    public function addTag(Tag $tags)
     {
         $this->tags[] = $tags;
         $tags->addUser($this);
@@ -376,9 +375,9 @@ class User extends BaseUser
     /**
      * Remove tags
      *
-     * @param \Ekologia\MainBundle\Entity\Tag $tags
+     * @param Tag $tags
      */
-    public function removeTag(\Ekologia\MainBundle\Entity\Tag $tags)
+    public function removeTag(Tag $tags)
     {
         $this->tags->removeElement($tags);
     }
@@ -386,11 +385,33 @@ class User extends BaseUser
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
         return $this->tags;
+    }
+    
+    public function addUserGroup(UserGroup $userGroup) {
+        $this->userGroups[] = $userGroup;
+        return $this;
+    }
+    
+    public function removeUserGroup(UserGroup $userGroup) {
+        $this->userGroups->removeElement($userGroup);
+        return $this;
+    }
+    
+    public function getUserGroups() {
+        return $this->userGroups;
+    }
+    
+    public function getGroups() {
+        $groups = new ArrayCollection();
+        foreach($this->getUserGroups() as $userGroup) {
+            $groups[] = $userGroup->getGroup();
+        }
+        return $groups;
     }
     
     /**
