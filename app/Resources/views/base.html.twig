@@ -6,6 +6,11 @@
          {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="all" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="all" />
+        <script>
+            var constants = {
+                locale: '{{ app.request.locale }}'
+            }
+        </script>
         <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/helper.js') }}"></script>

@@ -5,6 +5,6 @@ use FOS\UserBundle\Doctrine\UserManager;
 
 class UserRepository extends UserManager {
     public function findPossibleGroupAdministrators() {
-        return $this->findBy(array('userType' => 'puser'), array('username' => 'asc'));
+        return $this->repository->findBy(array('userType' => 'puser'), array('username' => 'asc'));
     }
 }

@@ -74,6 +74,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Ekologia\UserBundle\Entity\User
+    service:
+        user_manager: ekologia_user.user_repository
     registration:
         form:
             type: ekologia_user_registration

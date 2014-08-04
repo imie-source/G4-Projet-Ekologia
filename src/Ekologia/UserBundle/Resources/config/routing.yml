@@ -1,0 +1,35 @@
+# Group rest
+ekologia_user_group_list:
+    pattern:  /group/list
+    defaults: { _controller: EkologiaUserBundle:GroupRest:list }
+    options:
+        expose: true
+
+ekologia_user_group_read:
+    pattern:  /group/read/{id}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:read }
+    options:
+        expose: true
+
+ekologia_user_group_create:
+    pattern:  /group/create
+    defaults: { _controller: EkologiaUserBundle:GroupRest:create }
+    options:
+        expose: true
+
+ekologia_user_group_update:
+    pattern:  /group/update/{id}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:update }
+    options:
+        expose: true
+
+ekologia_user_group_delete:
+    pattern:  /group/delete/{id}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:delete }
+    options:
+        expose: true
+
+# group admin
+ekologia_user_group_index:
+    pattern: /admin/groups
+    defaults: { _controller: EkologiaUserBundle:GroupAdmin:index }

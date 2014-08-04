@@ -5,9 +5,14 @@ use Doctrine\ORM\EntityRepository;
 
 class GroupRepository extends EntityRepository {
     public function jsonList($offset, $limit) {
-        $groups = $this->createQueryBuilder('g')
-                       ->setFirstResult($offset)
-                       ->setMaxResults($limit);
+        $qb = $this->createQueryBuilder('g')->orderBy('g.name', 'asc');
+        if ($offset > 0) {
+            $qb->setFirstResult($offset);
+        }
+        if ($limit > 0) {
+            $qb->setMaxResults($limit);
+        }
+        $groups = $qb->getQuery()->getResult();
         return $this->groupsToJson($groups);
     }
     
@@ -16,7 +21,7 @@ class GroupRepository extends EntityRepository {
         return $this->groupToJson($group);
     }
     
-    private function groupsToJson($groups) {
+    public function groupsToJson($groups) {
         $result = array();
         foreach ($groups as $group) {
             $result[] = $this->groupToJson($group);
@@ -24,14 +29,19 @@ class GroupRepository extends EntityRepository {
         return $result;
     }
     
-    private function groupToJson($group) {
+    public function groupToJson($group) {
         if ($group === null) {
             return null;
         } else {
             return array(
                 'id' => $group->getId(),
                 'name' => $group->getName(),
+                'description' => $group->getDescription() !== null ? $group->getDescription() : '',
                 'coordinator' => $group->getCoordinator(),
+                'administrator' => array(
+                    'id' => $group->getAdministrator()->getId(),
+                    'name' => $group->getAdministrator()->getUsername(),
+                ),
                 'compose' => $this->usersToJson($group->getUserCompose()),
                 'participate' => $this->usersToJson($group->getUserParticipate())
             );

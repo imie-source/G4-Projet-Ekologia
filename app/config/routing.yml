@@ -40,6 +40,13 @@ fos_user_register:
     requirements:
         _locale: fr|en
 
+fos_user_group:
+    resource: "@EkologiaUserBundle/Resources/config/routing.yml"
+    prefix: /{_locale}
+    defaults: { _locale: %locale% }
+    requirements:
+        _locale: fr|en
+
 ekologia_menu:
     resource: "@EkologiaMenuBundle/Resources/config/routing.yml"
     prefix:   /{_locale}

@@ -41,7 +41,7 @@ class Group extends BaseGroup {
     private $administrator;
     
     
-    public function __construct($name, $roles = array()) {
+    public function __construct($name=null, $roles = array()) {
         parent::__construct($name, $roles);
         $this->userGroups = new ArrayCollection();
     }
@@ -49,10 +49,10 @@ class Group extends BaseGroup {
     /**
      * Set description
      *
-     * @param User $description
+     * @param string $description
      * @return Group
      */
-    public function setDescription(User $description = null)
+    public function setDescription($description = null)
     {
         $this->description = $description;
         return $this;

@@ -36,4 +36,18 @@ class MasterController extends Controller {
     protected function redirectResponse($url, $parameters=array()) {
         return $this->redirect($this->generateUrl($url, $parameters));
     }
+    
+    protected function formErrorToJson($errors) {
+        $result = array();
+        foreach($errors as $error) {
+            $result[] = array(
+                $error->getMessage(),
+                $error->getMessageTemplate(),
+                $error->getMessageParameters(),
+                $error->getMessagePluralization(),
+                $error->getCause()
+            );
+        }
+        return $result;
+    }
 }

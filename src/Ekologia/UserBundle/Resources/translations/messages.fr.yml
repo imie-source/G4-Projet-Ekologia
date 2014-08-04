@@ -37,8 +37,8 @@ ekologia:
                 label: Pays
             user-type:
                 label: Type d'utilisateur
-                cuser: Personne physique
-                puser: Personne morale
+                cuser: Personne morale
+                puser: Personne physique
         cuser:
             name:
                 not-blank: Le champ "nom" est obligatoire

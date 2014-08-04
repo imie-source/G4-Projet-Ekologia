@@ -10,3 +10,19 @@ services:
         arguments: [@doctrine]
         tags:
             - { name: kernel.event_subscriber }
+    
+    ekologia_user.group.form.type:
+        class: Ekologia\UserBundle\Form\Type\GroupType
+        tags:
+            - { name: form.type, alias: ekologia_user_grouptype }
+        arguments:
+            - @ekologia_user.user_repository
+    
+    ekologia_user.user_repository:
+        class: Ekologia\UserBundle\Entity\UserRepository
+        arguments:
+            - @security.encoder_factory
+            - @fos_user.util.username_canonicalizer
+            - @fos_user.util.email_canonicalizer
+            - @fos_user.entity_manager
+            - %fos_user.model.user.class%
