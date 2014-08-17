@@ -21,6 +21,12 @@ class GroupRepository extends EntityRepository {
         return $this->groupToJson($group);
     }
     
+    public function isAdminGroup($groupid, $userid) {
+        /* @var $group Group */
+        $group = $this->find($groupid);
+        return $group->getAdministrator()->getId() === $userid;
+    }
+    
     public function groupsToJson($groups) {
         $result = array();
         foreach ($groups as $group) {
@@ -28,7 +34,11 @@ class GroupRepository extends EntityRepository {
         }
         return $result;
     }
-    
+
+    /**
+     * @param $group Group
+     * @return array|null
+     */
     public function groupToJson($group) {
         if ($group === null) {
             return null;
@@ -51,7 +61,7 @@ class GroupRepository extends EntityRepository {
     private function usersToJson($users) {
         $result = array();
         foreach ($users as $user) {
-            $result[] = $this->groupToJson($user);
+            $result[] = $this->userToJson($user);
         }
         return $result;
     }

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script>
+        var current_group = {
+            id: {{ group.id }}
+        }
+    </script>
+    <script src="{{ asset('bundles/ekologiauser/js/group.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ group.name }}</h1>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and group.isUserInclude(app.user) == false %}
+        <span class="join-group">{{ 'ekologia.user.group.actions.join'|trans }}</span>
+    {% endif %}
+    <div class="hidden" id="form-request">
+        {{ form(formRequest) }}
+    </div>
+{% endblock %}

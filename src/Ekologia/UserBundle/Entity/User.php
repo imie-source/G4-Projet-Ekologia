@@ -86,6 +86,13 @@ class User extends BaseUser
     private $userType;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="adherent", type="boolean", nullable=false)
+     */
+    private $adherent;
+    
+    /**
      * @ORM\OneToOne(targetEntity="Ekologia\UserBundle\Entity\PUser", cascade={"persist"})
      */
     private $puser;
@@ -116,6 +123,7 @@ class User extends BaseUser
         parent::__construct();
         $this->tags = new ArrayCollection();
         $this->userGroups = new ArrayCollection();
+        $this->adherent = false;
     }
 
     /**
@@ -313,6 +321,39 @@ class User extends BaseUser
     }
 
     /**
+     * Set adherent
+     *
+     * @param boolean $adherent
+     * @return User
+     */
+    public function setAdherent($adherent)
+    {
+        $this->adherent = $adherent;
+
+        return $this;
+    }
+
+    /**
+     * Get adherent
+     *
+     * @return boolean
+     */
+    public function getAdherent()
+    {
+        return $this->adherent;
+    }
+
+    /**
+     * Is adherent
+     *
+     * @return boolean
+     */
+    public function isAdherent()
+    {
+        return $this->adherent;
+    }
+
+    /**
      * Set puser
      *
      * @param PUser $puser
@@ -391,21 +432,35 @@ class User extends BaseUser
     {
         return $this->tags;
     }
-    
+
+    /**
+     * @param UserGroup $userGroup
+     * @return $this
+     */
     public function addUserGroup(UserGroup $userGroup) {
         $this->userGroups[] = $userGroup;
         return $this;
     }
-    
+
+    /**
+     * @param UserGroup $userGroup
+     * @return $this
+     */
     public function removeUserGroup(UserGroup $userGroup) {
         $this->userGroups->removeElement($userGroup);
         return $this;
     }
-    
+
+    /**
+     * @return UserGroup[]
+     */
     public function getUserGroups() {
         return $this->userGroups;
     }
-    
+
+    /**
+     * @return Group[]
+     */
     public function getGroups() {
         $groups = new ArrayCollection();
         foreach($this->getUserGroups() as $userGroup) {

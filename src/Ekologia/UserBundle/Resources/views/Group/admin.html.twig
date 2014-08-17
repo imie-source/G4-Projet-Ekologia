@@ -1,37 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block javascripts %}
-<script src="{{ asset('bundles/ekologiauser/js/groups.js') }}"></script>
+    <script src="{{ asset('bundles/ekologiauser/js/groups-admin.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-<div class="pull-right">
-    <input type="search" name="search-group" />
-</div>
+    <div class="pull-right">
+        <input type="search" name="search-group"/>
+    </div>
 
-<div id="group-create">
-    {{ form(formCreate) }}
-</div>
+    <div id="group-create">
+        {{ form(formCreate) }}
+    </div>
 
-<table class="table table-bordered table-hover table-striped" id="group-list">
-    <thead>
-        <tr>
-            <th>{{ 'ekologia.user.group.name'|trans }}</th>
-            <th>{{ 'ekologia.user.group.description'|trans }}</th>
-            <th>{{ 'ekologia.user.group.administrator'|trans }}</th>
-            <th>{{ 'ekologia.user.group.type'|trans }}</th>
-            <th>{{ 'ekologia.user.group.modify'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+    <table class="table table-bordered table-hover table-striped" id="group-list">
+        <thead>
+            <tr>
+                <th>{{ 'ekologia.user.group.name'|trans }}</th>
+                <th>{{ 'ekologia.user.group.description'|trans }}</th>
+                <th>{{ 'ekologia.user.group.administrator'|trans }}</th>
+                <th>{{ 'ekologia.user.group.type'|trans }}</th>
+                <th>{{ 'ekologia.user.group.modify'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
-<div id="group-update">
-    {{ form(formUpdate) }}
-</div>
+    <div id="group-update">
+        {{ form(formUpdate) }}
+    </div>
 
-<div id="group-delete">
-    {{ form(formDelete) }}
-</div>
+    <div id="group-delete">
+        {{ form(formDelete) }}
+    </div>
 {% endblock %}

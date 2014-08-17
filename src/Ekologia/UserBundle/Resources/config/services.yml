@@ -26,3 +26,8 @@ services:
             - @fos_user.util.email_canonicalizer
             - @fos_user.entity_manager
             - %fos_user.model.user.class%
+
+    ekologia_user.usergrouprequest.form.type:
+        class: Ekologia\UserBundle\Form\Type\UserGroupRequestType
+        tags:
+            - { name: form.type, alias: ekologia_usergroup_request }

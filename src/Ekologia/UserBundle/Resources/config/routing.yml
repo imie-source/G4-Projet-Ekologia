@@ -29,7 +29,50 @@ ekologia_user_group_delete:
     options:
         expose: true
 
+ekologia_user_group_requestfromuser:
+    pattern: /group/request/user/{groupid}/{type}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:requestFromUser }
+    options:
+        expose: true
+
+ekologia_user_group_requestfromgroup:
+    pattern: /group/request/group/{groupid}/{userid}/{type}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:requestFromGroup }
+    options:
+        expose: true
+
+ekologia_user_group_acceptfromuser:
+    pattern: /group/accept/user/{groupid}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:acceptFromUser }
+    options:
+        expose: true
+
+ekologia_user_group_acceptfromgroup:
+    pattern: /group/accept/group/{groupid}/{userid}
+    defaults: { _controller: EkologiaUserBundle:GroupRest:acceptFromGroup }
+    options:
+        expose: true
+
 # group admin
 ekologia_user_group_index:
     pattern: /admin/groups
     defaults: { _controller: EkologiaUserBundle:GroupAdmin:index }
+
+# group view
+ekologia_user_group_view:
+    pattern: /group/{id}
+    defaults: { _controller: EkologiaUserBundle:GroupView:view }
+    options:
+        expose: true
+
+ekologia_user_group_mygroups:
+    pattern: /mygroups
+    defaults: { _controller: EkologiaUserBundle:GroupView:myGroups }
+
+ekologia_user_group_users:
+    pattern: /group/{id}/users
+    defaults: { _controller: EkologiaUserBundle:GroupView:users }
+
+ekologia_user_group_search:
+    pattern: /groups/search
+    defaults: { _controller: EkologiaUserBundle:GroupView:search }

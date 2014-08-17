@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserGroup
  *
  * @ORM\Table(name="eko_usergroup")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ekologia\UserBundle\Entity\UserGroupRepository")
  */
 class UserGroup extends AbstractGroupLink
 {

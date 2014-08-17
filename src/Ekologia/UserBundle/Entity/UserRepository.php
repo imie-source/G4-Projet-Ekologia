@@ -7,4 +7,8 @@ class UserRepository extends UserManager {
     public function findPossibleGroupAdministrators() {
         return $this->repository->findBy(array('userType' => 'puser'), array('username' => 'asc'));
     }
+
+    public function find($id) {
+        return $this->repository->find($id);
+    }
 }

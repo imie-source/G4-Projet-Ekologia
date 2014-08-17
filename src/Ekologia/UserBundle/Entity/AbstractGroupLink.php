@@ -18,7 +18,7 @@ abstract class AbstractGroupLink
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
@@ -44,14 +44,14 @@ abstract class AbstractGroupLink
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="validationDate", type="datetime")
+     * @ORM\Column(name="validationDate", type="datetime", nullable=true)
      */
     private $validationDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=255)
+     * @ORM\Column(name="role", type="string", length=255, nullable=true)
      */
     private $role;
 
